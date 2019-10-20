@@ -1,0 +1,168 @@
+﻿/* DEFAULTS
+----------------------------------------------------------*/
+@import url(http://fonts.googleapis.com/css?family=Oxygen:400,700,300);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic);
+@import url(http://fonts.googleapis.com/css?family=Patua+One);
+@import url(http://fonts.googleapis.com/css?family=Slabo+27px);
+
+/**  Basic Page CSS **/
+body{
+  font-family: 'Slabo 27px', serif;
+  font-weight: 300;
+  font-size: 2em;
+  position: relative;
+}
+
+h1 ,h3{
+  font-family: 'Patua One', cursive; text-transform:capitalize;}
+
+ h2,, h4, h5, h6 {
+  font-family: 'Oxygen', sans-serif;
+  font-weight: 100;
+  margin: 0;
+}
+
+img {
+	max-width: 200px;
+}
+
+/**  Headder Nav bar start**/
+.navbar{ background-color: White; border:0;font-family: 'Open Sans Condensed', sans-serif; min-height:90px;border-radius:0; border-top:solid 5px #0F7DC1; border-bottom:solid 5px #0F7DC1; padding-bottom:0!important;}
+.navbar-brand {padding-top:5px !important;}
+.navbar-default .navbar-nav>li {  padding: 30px 10px 10px 10px;position: relative;}
+.navbar-default .navbar-nav>li>a { padding:0!important; text-transform:uppercase; font-weight:bold; font-size:14px; color:Gray; }
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {color: #555;background-color: transparent; border-bottom:solid 3px #0F7DC1;}
+.navbar-default .navbar-nav>li>a:hover,.navbar-default .navbar-nav>li>a:focus,.navbar-default .navbar-nav>li>a:hover { color: Black; background-color: transparent;border-bottom:solid 3px #0F7DC1;}
+
+/**  Navbar Toggle  start**/
+.navbar-toggle { background-color:#0F7DC1; color:White;}
+.navbar-default .navbar-toggle .icon-bar {background-color: white;}
+.navbar-brand>img {display: block; padding-top:10px;max-width: 300px;}
+.navbar-toggle:focus, .navbar-default .navbar-toggle:hover {background-color: #0F7DC1 !important;}
+
+/**  Navbar Toggle  end**/
+ @media (max-width:1200px)
+{
+ .navbar-default .navbar-nav>li>a { font-size:13px;}
+ .navbar-brand {padding-top:15px !important;}
+ .navbar-brand>img {max-width: 140px;}
+ 
+ }
+  @media (max-width:992px)
+{
+     .navbar-default .navbar-nav>li {  padding: 30px 8px 8px 8px;position: relative;}
+     .navbar-default .navbar-nav>li>a { font-size:10px;}
+     .navbar-brand {padding-top:15px !important;}
+     .navbar-brand>img {max-width: 110px;}
+ }
+  @media (max-width:767px)
+{
+ .nav.navbar-nav.navbar-right{ background-color:#ffffff!important;}
+ .navbar-brand {padding-top:0px !important;}
+ .navbar-brand>img {max-width:200px;}
+ .navbar-default .navbar-collapse, .navbar-default .navbar-form {border-color: #0F7DC1;}
+ .navbar-default .navbar-nav>li {  padding:0px;position: relative; margin-bottom:1px;}
+ .navbar-default .navbar-nav>li>a { padding:10px!important; text-transform:uppercase; font-weight:bold; font-size:14px; color:Gray; }
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover { border:0; background-color:#0F7DC1; color:White; }
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover { border:0;background-color:#0F7DC1; color:#ffffff;}
+ }
+/**  Headder Nav bar end**/
+/**  welcome note div start**/
+.wel.pages{ padding-bottom:20px;}
+.wel.container h1{ text-align:center;}
+.wel.container p{ text-align:center;}
+/**  welcome note div end**/
+
+/**  Thing to do div start**/
+.thi.pages{ background-color:#D6F0FF; padding-bottom:20px;}
+.thi.container h1{ text-align:center; padding-bottom:10px; }
+.thi.container p{ text-align:center;}
+.thi-D{ text-align:center;width:100%; display:block; padding-top:8px; color:Black;}
+.thi-D:hover{ text-decoration:underline; color:Black;}
+.col-md-3.col-sm-3.col-xs-6.portfolio-item{}
+  @media (max-width:767px)
+{
+.col-md-3.col-sm-3.col-xs-6.portfolio-item{ padding-bottom:10px;}
+ }
+   @media (max-width:320px)
+{
+.col-md-3.col-sm-3.col-xs-6.portfolio-item{ width:100%;}
+ }
+/** Thing to do div end**/
+
+/**  Packages div start**/
+.pack.pages{ background-color: White; padding-bottom:20px;}
+.pack.container h1{ text-align:center; padding-bottom:10px; }
+.pack.container p{ text-align:center;}
+.pack-D{ text-align:center;width:100%; display:block; padding-top:8px; color:Black;}
+.pack-D:hover{ text-decoration:underline; color:Black;}
+
+/** Packages div end**/
+/**  Footer start  **/
+footer{}
+.foot.pages{ background-color:#f0f0f0; padding-bottom:20px;}
+.foot.col-md-3.col-sm-6.col-xs-12{}
+.foot.col-md-3.col-sm-6.col-xs-12 h3{ color:#313030; padding-top:5px; padding-bottom:5px;}
+.foot.col-md-3.col-sm-6.col-xs-12 p{ color:#313030; font-size:15px; padding:0;}
+.foots.col-md-3.col-sm-6.col-xs-12 h3{ color:#313030; padding-top:5px; padding-bottom:5px;}
+.foots.col-md-3.col-sm-6.col-xs-12 a{ color:#313030; font-size:15px; padding:0; width:100%; display:block; padding-bottom:5px;}
+
+.foot.col-md-3.col-sm-6.col-xs-12 span{ color:#313030; font-size:15px;}
+.followUs { padding-bottom:10px; padding-top:-50px !important; }
+.followUs a {display: inline-block;width: 40px;height: 40px;border-radius: 50%;font-size: 20px;text-align: center;color: #FFF;background:#313030;padding-top: 10px;margin-right: 5px;position: relative;}
+ @media (max-width:768px)
+{
+.foot.col-md-3.col-sm-6.col-xs-12{ width:33.33%;}
+.foots.col-md-3.col-sm-4.col-xs-12{ width:33.33%;}
+.wdb{ float:left!important;}
+ }
+  @media (max-width:650px)
+{
+.foot.col-md-3.col-sm-6.col-xs-12{ width:100%;}
+.foots.col-md-3.col-sm-6.col-xs-12{ width:100%;}
+ }
+ .webe.pagess{ background-color:#0F7DC1;}
+/**  Footer end  **/
+
+footer .navbar-default{ background-color:transparent;}
+.pages{ padding:50;}
+.page{ padding:60px 0;}
+.page h2 { text-align:center;}
+.navbar { margin-bottom:0px !important; }
+.carousel-caption { margin-top:0px !important }
+
+/**  Contact us page Start  **/
+.contact.pages{ padding-bottom:20px;}
+.contact.container h1{ text-align: left; }
+.con-itb.pages{ padding-bottom:20px;}
+.con-itb.container h1{ text-align: left; }
+.conb.col-lg-6.col-md-6.col-sm-6.col-xs-12{ background-color:#0F0; }
+.conb1.col-lg-5.col-md-5.col-sm-5.col-xs-12{ background-color: #C06; height:230px;}
+.conb1.col-lg-5.col-md-5.col-sm-5.col-xs-12 img{height:100%;}
+.conb2.col-lg-7.col-md-7.col-sm-7.col-xs-12 p{ font-size:16px;}
+.btn.pull-right{ color:white; background-color:#d57606;}
+
+/** Destinations page Start  **/
+/** tour Packages page Start  **/
+.tp.btn.btn-primary{ background-color:#d57606; border:none; font-size:25px; text-align:right; cursor:default;}
+.tp.col-md-5 h3{ color:#337ab7;}
+.tp.col-md-5 p{ font-size:15px; padding-top:10px;}
+.tp.col-md-5 span{ width:100%; font-size:18px; padding-bottom:10px;}
+.tp.col-md-5 span font{ color:#337ab7;}
+.tprm.btn.btn-primary{border:none; background-color:silver; color:#000; margin-top:10px;}
+/** Accommodation page Start  **/
+.acc.col-md-5 h3{ color:#337ab7;  margin-top:5px;}
+.acc.col-md-5 span{ width:100%; font-size:18px; padding-bottom:10px; color:#d57606; font-weight:bold;}
+.acc.col-md-5 span font{ color:#666;}
+.acc.col-md-5 p{ font-size:15px; padding-top:10px;}
+/** Gallery page Start  **/
+/**  Contact Page start  **/
+.btn-default {color:#ffffff;background-color: #ff0000;border-color: #ccc;}
+.btn-default:hover {color:#ffffff;background-color: #000000;border-color: #ccc;}
+.con-itb.pages h3{color:#000000; padding-bottom:15px;}
+.Contact_page.pagesd p{color:#210f03;}
+.Contact_page.pagesd p strong{color:#ff0000;}
+.Contact_page.pagesd label{color:#ff0000;}
+ 
+/**  Contact Page end  **/
+
