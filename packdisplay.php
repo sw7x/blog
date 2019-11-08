@@ -1,26 +1,107 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<?php $bodyId = "Packages" ?>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title></title>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	<link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <script src="js/prefixfree.min.js" type="text/javascript"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body id="Packages">
+<?php include "header.php"; ?>
+
+
 
 <!-- header start -->
 <header>
-<?php include "navigation.php"; ?><!-- Headder Nav Bar End-->
-
+<?php include "navigation.php"; ?>
 </header>
 <!-- header end -->
- <!-- Home Contend  start -->
-<?php include "includes/content/packdisplay.php"; ?>
-<!-- Home Contend  end -->
 
+
+<?php
+
+$connection = mysqli_connect('localhost', 'root', '', 'travel');
+mysqli_set_charset($connection,"utf8");
+
+if(isset($_GET['dis'])){
+
+	$display_id= $_GET['dis'];
+	$select_post = "select * from package where id='$display_id'";
+	$result = $connection->query($select_post);
+  	var_dump($result);
+  	while($row = $result->fetch_array())
+  	{
+  		$P_id = $row['id'];
+  		$P_title = $row['title'];
+  		$P_price = $row['price'];
+  		$P_discription =$row['discription'];
+  		$P_image = $row['image'];
+  		$P_duration = $row['duration'];
+  		$P_highlights1 = $row['highlights1'];
+  		$P_highlights2 = $row['highlights2'];
+  		$P_highlights3 = $row['highlights3'];
+  		$P_highlights4 = $row['highlights4'];
+  		$P_highlights5 = $row['highlights5'];
+  	}
+}
+else
+{
+	
+	$P_id = '';
+	$P_title = '';
+	$P_price ='';
+	$P_discription = '';
+	$P_image = '';
+	$P_image = '';
+	$P_duration = '';
+	$P_highlights1 ='';
+	$P_highlights2 ='';
+	$P_highlights3 ='';
+	$P_highlights4 ='';
+	$P_highlights5 ='';
+	$display_id=NULL;
+
+}
+?>
+
+    <div class="contact pages">
+        <div class="contact container">
+            <h1>ssssssss<?php echo $P_title;  ?></h1>
+        </div>
+    </div>
   
+  <!-- Tour Packages  Discription start -->
+    <div class="con-itb pages">
+    	<div class="con-itb container" >
+
+    
+	       	<!-- Project One -->
+	        <div class="row">
+	            <div class="tp col-md-7">
+	                <a href="#">
+	                    <img class="img-responsive"  src="images/package/<?php  echo $P_image;?>" alt="">
+	                </a>
+	            </div>
+	            <div class="tp col-md-5">
+	                <h3><?php echo $P_title;  ?></h3>
+	                 <span> Duration:  <font > <?php echo $P_duration; ?> </font></span> <br><br>
+					 <a class="tp btn btn-primary" href="#">From US$<?php echo $P_price;?></a>
+	                  
+	              
+	            </div>
+	        </div>
+        
+	        <div class="row" style="padding-top:20px;">
+	        	<div class="tp col-md-12">
+	        		<p><?php echo $P_discription; ?></p>
+	        		<h3>Tour Highlights</h3>
+	        		<ul>
+	        			<li><?php echo $P_highlights1; ?></li>
+	        			<li><?php echo $P_highlights2; ?></li>
+	        			<li><?php echo $P_highlights3; ?></li>
+	        			<li><?php echo $P_highlights4; ?></li>
+	        			<?php if($P_highlights5!==''){?><li><?php echo $P_highlights5; ?></li><?php }?>
+	        		</ul>
+	        	</div>
+	        </div>
+
+               
+    	</div>
+    </div>
+
+
+<!-- Home Contend  end --> 
 <?php include "footer.php"; ?>

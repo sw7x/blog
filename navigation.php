@@ -11,15 +11,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="./"><img alt="" src="images/Core/logo.png" /></a>
+            <a class="navbar-brand" href="./"><img alt="" src="images/core/logo.png" /></a>
         </div>
         <!-- logo div end-->
         <!-- Manu items start-->
         <div class="collapse navbar-collapse" id="collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li> <a href="index.php">Home</a></li>
-                <li><a href="Teen-and-summer-holidays.php">teen age summer holidays</a></li>
-                <li><a href="Packages.php">Tour packages</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="teen-and-summer-holidays.php">Teen age summer holidays</a></li>
+                <li><a href="packages.php">Tour packages</a></li>
                 <li><a href="destinations.php">Destinations</a></li>
                 <li><a href="accommodation.php">Accommodation</a></li>
                 <li><a href="gallery.php">Honeymoon packages</a></li>

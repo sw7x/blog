@@ -1,16 +1,8 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<?php $bodyId = "home" ?>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title></title>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="css/style.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-<script src="js/prefixfree.min.js" type="text/javascript"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body id="home">
+<?php include "header.php"; ?>
+
+
 
 <!-- header start -->
 <header>
@@ -18,9 +10,124 @@
 <?php include "slider.php"; ?><!-- Flash div  end -->
 </header>
 <!-- header end -->
- <!-- Home Contend  start -->
-<?php include "includes/content/home.php"; ?>
-<!-- Home Contend  end -->
 
-  
+
+<!-- welcome note div start -->
+<div class="wel pages">
+    <div class="wel container">
+        <h1>
+        welcome to luxury tours Sri lanka</h1>
+        <p>Srilankan holidays offers you range of holidays package from luxury holidays to village holidays from any part of the country. We offer you in luxury transportation by land, sea or air for your ultimate comfort with a Professional English speaking tour guide that will escort you during your tour.</p>
+    </div>
+</div>
+<!-- welcome note div end -->
+
+<!-- Thing to do div start -->
+<div class="thi pages">
+    <div class="thi container">
+        <h1>Things To Do</h1>
+
+        <!-- Projects Row start -->
+        <div class="row">
+            <div class="col-md-3 col-sm-3 col-xs-6 portfolio-item">
+                <a href="#">
+                    <img class="img-thumbnail img-responsive" src="images/things/1.jpg" alt="">
+                </a>
+                <a class="thi-D" href="">Hiking</a>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 portfolio-item">
+                <a href="#">
+                    <img class="img-thumbnail img-responsive" src="images/things/5.jpg" alt="">
+                </a>
+                <a class="thi-D" href="">Surfing</a>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 portfolio-item">
+                <a href="#">
+                    <img class="img-thumbnail img-responsive" src="images/things/6.jpg" alt="">
+                </a>
+                <a class="thi-D" href="">Zip lining</a>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 portfolio-item">
+                <a href="#">
+                    <img class="img-thumbnail img-responsive" src="images/things/7.jpg" alt="">
+                </a>
+                <a class="thi-D" href="">Golfing</a>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 portfolio-item">
+                <a href="#">
+                    <img class="img-thumbnail img-responsive" src="images/things/8.jpg" alt="">
+                </a>
+                <a class="thi-D" href="">Off Road Adventures</a>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 portfolio-item">
+                <a href="#">
+                    <img class="img-thumbnail img-responsive" src="images/things/9.jpg" alt="">
+                </a>
+                <a class="thi-D" href="">Luxury Camping</a>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 portfolio-item">
+                <a href="#">
+                    <img class="img-thumbnail img-responsive" src="images/things/10.jpg" alt="">
+                </a>
+                <a class="thi-D" href="">Gem mines	</a>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 portfolio-item">
+                <a href="#">
+                    <img class="img-thumbnail img-responsive" src="images/things/11.jpg" alt="">
+                </a>
+                <a class="thi-D" href="">Waterfalls</a>
+            </div>
+        </div>
+        <!-- Projects Row end -->
+    </div>
+</div>
+<!--  Thing to do div end -->
+
+<!-- Luxury hotels div start -->
+<div class="pack pages">
+    <div class="pack container">
+        <h1>most popular Luxury hotels </h1>
+
+        <!-- Projects Row start -->
+        <div class="row">
+            <div class="col-md-3 col-sm-3 col-xs-6 portfolio-item">
+                <a href="#">
+                    <img class="img-thumbnail img-responsive" src="images/packages/1.jpg" alt="">
+                </a>
+
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 portfolio-item">
+                <a href="#">
+                    <img class="img-thumbnail img-responsive" src="images/packages/2.jpg" alt="">
+                </a>
+
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 portfolio-item">
+                <a href="#">
+                    <img class="img-thumbnail img-responsive" src="images/packages/3.jpg" alt="">
+                </a>
+
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 portfolio-item">
+                <a href="#">
+                    <img class="img-thumbnail img-responsive" src="images/packages/4.jpg" alt="">
+                </a>
+
+            </div>
+        </div>
+        <!-- Projects Row end -->
+
+    </div>
+</div>
+<!--  Luxury hotels div end -->
+
+
+
+
+
+
+
+
+
+
 <?php include "footer.php"; ?>

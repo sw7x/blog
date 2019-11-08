@@ -1,4 +1,4 @@
-\<!-- Flash div start  -->
+<!-- Flash div start  -->
   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
@@ -10,10 +10,10 @@
  
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
-    <div class="item active"><img src="images/Flash/1.jpg" alt="..."></div>
-    <div class="item"><img src="images/Flash/2.jpg" alt="..."></div>
-    <div class="item"><img src="images/Flash/3.jpg" alt="..."></div>
-    <div class="item"><img src="images/Flash/4.jpg" alt="..."></div>
+    <div class="item active"><img src="images/flash/1.jpg" alt="..."></div>
+    <div class="item"><img src="images/flash/2.jpg" alt="..."></div>
+    <div class="item"><img src="images/flash/3.jpg" alt="..."></div>
+    <div class="item"><img src="images/flash/4.jpg" alt="..."></div>
   </div>
  
   <!-- Controls -->

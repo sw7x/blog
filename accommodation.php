@@ -1,25 +1,261 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<?php $bodyId = "Accommodation" ?>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title></title>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	<link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <script src="js/prefixfree.min.js" type="text/javascript"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body id="Accommodation">
+
+<?php include "header.php"; ?>
 
 <!-- header start -->
 <header>
 <?php include "navigation.php"; ?><!-- Headder Nav Bar End-->
 </header>
 <!-- header end -->
- <!-- Home Contend  start -->
-<?php include "includes/content/accommodation.php"; ?>
-<!-- Home Contend  end -->
+
+
+
+
+
+<!-- Tour Packages  headder  div start -->
+
+
+<div class="contact pages">
+    <div class="contact container">
+        <h1>Accommodation</h1>
+    </div>
+</div>
+<!-- Tour Packages  headder div end -->
+
+
+<!-- Tour Packages  Discription start -->
+<div class="con-itb pages">
+    <div class="con-itb container" >
+
+
+
+        <!-- Project 1 -->
+        <div class="row">
+            <div class="acc col-md-7">
+                <a href="#">
+                    <img class="img-responsive" src="images/accommodation/1.jpg" alt="">
+                </a>
+            </div>
+            <div class="acc col-md-5">
+                <h3>Amangalla Resort</h3>
+                <span> Destination :  <font > Hotels Galle </font></span> <br>
+                <span> Type :  <font > 3 Star </font></span> <br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+
+                <a class="acc btn btn-primary" href="#">Read More</a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+        <!-- Project 2 -->
+        <div class="row">
+            <div class="acc col-md-7">
+                <a href="#">
+                    <img class="img-responsive" src="images/accommodation/2.jpg" alt="">
+                </a>
+            </div>
+            <div class="acc col-md-5">
+                <h3>Amangalla Resort</h3>
+                <span> Destination :  <font > Hotels Galle </font></span> <br>
+                <span> Type :  <font > 3 Star </font></span> <br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+
+                <a class="acc btn btn-primary" href="#">Read More</a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Project 3 -->
+        <div class="row">
+            <div class="acc col-md-7">
+                <a href="#">
+                    <img class="img-responsive" src="images/accommodation/3.jpg" alt="">
+                </a>
+            </div>
+            <div class="acc col-md-5">
+                <h3>Amangalla Resort</h3>
+                <span> Destination :  <font > Hotels Galle </font></span> <br>
+                <span> Type :  <font > 3 Star </font></span> <br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+
+                <a class="acc btn btn-primary" href="#">Read More</a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Project 4 -->
+        <div class="row">
+            <div class="acc col-md-7">
+                <a href="#">
+                    <img class="img-responsive" src="images/accommodation/4.jpg" alt="">
+                </a>
+            </div>
+            <div class="acc col-md-5">
+                <h3>Amangalla Resort</h3>
+                <span> Destination :  <font > Hotels Galle </font></span> <br>
+                <span> Type :  <font > 3 Star </font></span> <br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+
+                <a class="acc btn btn-primary" href="#">Read More</a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+        <!-- Project 5 -->
+        <div class="row">
+            <div class="acc col-md-7">
+                <a href="#">
+                    <img class="img-responsive" src="images/accommodation/5.jpg" alt="">
+                </a>
+            </div>
+            <div class="acc col-md-5">
+                <h3>Amangalla Resort</h3>
+                <span> Destination :  <font > Hotels Galle </font></span> <br>
+                <span> Type :  <font > 3 Star </font></span> <br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+
+                <a class="acc btn btn-primary" href="#">Read More</a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+        <!-- Project 6 -->
+        <div class="row">
+            <div class="acc col-md-7">
+                <a href="#">
+                    <img class="img-responsive" src="images/accommodation/6.jpg" alt="">
+                </a>
+            </div>
+            <div class="acc col-md-5">
+                <h3>Amangalla Resort</h3>
+                <span> Destination :  <font > Hotels Galle </font></span> <br>
+                <span> Type :  <font > 3 Star </font></span> <br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+
+                <a class="acc btn btn-primary" href="#">Read More</a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+        <!-- Project 7 -->
+        <div class="row">
+            <div class="acc col-md-7">
+                <a href="#">
+                    <img class="img-responsive" src="images/accommodation/7.jpg" alt="">
+                </a>
+            </div>
+            <div class="acc col-md-5">
+                <h3>Amangalla Resort</h3>
+                <span> Destination :  <font > Hotels Galle </font></span> <br>
+                <span> Type :  <font > 3 Star </font></span> <br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+
+                <a class="acc btn btn-primary" href="#">Read More</a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+        <!-- Project 8 -->
+        <div class="row">
+            <div class="acc col-md-7">
+                <a href="#">
+                    <img class="img-responsive" src="images/accommodation/8.jpg" alt="">
+                </a>
+            </div>
+            <div class="acc col-md-5">
+                <h3>Amangalla Resort</h3>
+                <span> Destination :  <font > Hotels Galle </font></span> <br>
+                <span> Type :  <font > 3 Star </font></span> <br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+
+                <a class="acc btn btn-primary" href="#">Read More</a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+        <!-- Project 9 -->
+        <div class="row">
+            <div class="acc col-md-7">
+                <a href="#">
+                    <img class="img-responsive" src="images/accommodation/9.jpg" alt="">
+                </a>
+            </div>
+            <div class="acc col-md-5">
+                <h3>Amangalla Resort</h3>
+                <span> Destination :  <font > Hotels Galle </font></span> <br>
+                <span> Type :  <font > 3 Star </font></span> <br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+
+                <a class="acc btn btn-primary" href="#">Read More</a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+        <!-- Project 10 -->
+        <div class="row">
+            <div class="acc col-md-7">
+                <a href="#">
+                    <img class="img-responsive" src="images/accommodation/10.jpg" alt="">
+                </a>
+            </div>
+            <div class="acc col-md-5">
+                <h3>Amangalla Resort</h3>
+                <span> Destination :  <font > Hotels Galle </font></span> <br>
+                <span> Type :  <font > 3 Star </font></span> <br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+
+                <a class="acc btn btn-primary" href="#">Read More</a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+</div>
+<!-- Tour Packages  Discription  end -->
+
+
+<!-- Pagination -->
+<div class="container">
+    <div class="row text-center">
+        <div class="col-lg-12">
+            <ul class="pagination">
+                <li>
+                    <a href="#">&laquo;</a>
+                </li>
+                <li class="active">
+                    <a href="#">1</a>
+                </li>
+                <li>
+                    <a href="#">2</a>
+                </li>
+                <li>
+                    <a href="#">&raquo;</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- /.row -->
+
+
+
+
+
+
+
+
 
   
 <?php include "footer.php"; ?>

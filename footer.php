@@ -53,7 +53,7 @@
                     <p style="font-family:Tahoma, Geneva, sans-serif; font-size:11px; color:#ffffff; float:left; margin-top:10px;">2015 © LANKA CCTV. All Rights Reserved.</p>
                 </div>
                 <div class="col-sm-6 col-xs-12">
-                    <a class="wdb" target="_blank" href="" style="text-decoration:none; float:right" title="Web Design Sri Lanka"><p style="font-family:Tahoma, Geneva, sans-serif; font-size:11px; color:#ffffff; float:right; margin-top:10px;"> Design &amp; Develop by Web Designers Sri Lanka </p>
+                    <a class="wdb" href="#" style="text-decoration:none; float:right" title="Web Design Sri Lanka"><p style="font-family:Tahoma, Geneva, sans-serif; font-size:11px; color:#ffffff; float:right; margin-top:10px;"> Design &amp; Develop by Web Designers Sri Lanka </p>
                     </a>
                 </div>
             </div>

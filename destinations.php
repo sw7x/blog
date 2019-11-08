@@ -1,16 +1,8 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<?php $bodyId = "Destinations" ?>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title></title>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	<link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <script src="js/prefixfree.min.js" type="text/javascript"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body id="Destinations">
+<?php include "header.php"; ?>
+
+
 
 <!-- header start -->
 <header>
@@ -18,9 +10,192 @@
 
 </header>
 <!-- header end -->
- <!-- Home Contend  start -->
-<?php include "includes/content/destinations.php"; ?>
-<!-- Home Contend  end -->
+
+
+
+<!-- Destination headder  div start -->
+
+
+<div class="contact pages">
+    <div class="contact container">
+        <h1>Destinations</h1>
+    </div>
+</div>
+<!-- Destination headder div end -->
+<!-- Destination Discription start -->
+<div class="con-itb pages">
+    <div class="con-itb container" >
+
+        <!-- Project One -->
+        <div class="row">
+            <div class="col-md-7">
+                <a href="#">
+                    <img class="img-responsive" src="images/destinations/1.jpg" alt="">
+                </a>
+            </div>
+            <div class="col-md-5">
+                <h3>Colombo, Sri Lanka</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+                <a class="btn btn-primary" href="#">Read More</a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+        <!-- Project Two -->
+        <div class="row">
+            <div class="col-md-7">
+                <a href="#">
+                    <img class="img-responsive" src="images/destinations/2.jpg" alt="">
+                </a>
+            </div>
+            <div class="col-md-5">
+                <h3>Anuradhapura, Sri Lanka</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
+                <a class="btn btn-primary" href="#">Read More</a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Project Three -->
+        <div class="row">
+            <div class="col-md-7">
+                <a href="#">
+                    <img class="img-responsive" src="images/destinations/3.jpg" alt="">
+                </a>
+            </div>
+            <div class="col-md-5">
+                <h3>Sigiriya, Sri Lanka</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
+                <a class="btn btn-primary" href="#">Read More</a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Project Four -->
+        <div class="row">
+
+            <div class="col-md-7">
+                <a href="#">
+                    <img class="img-responsive" src="images/destinations/4.jpg" alt="">
+                </a>
+            </div>
+            <div class="col-md-5">
+                <h3>Polonnaruwa, Sri Lanka</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
+                <a class="btn btn-primary" href="#">Read More</a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Project Five -->
+        <div class="row">
+            <div class="col-md-7">
+                <a href="#">
+                    <img class="img-responsive" src="images/destinations/5.jpg" alt="">
+                </a>
+            </div>
+            <div class="col-md-5">
+                <h3>Dambulla Cave Temple, Sri Lanka</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
+                <a class="btn btn-primary" href="#">Read More</a>
+            </div>
+        </div>
+        <!-- /.row -->
+        <hr>
+
+        <!-- Project six -->
+        <div class="row">
+
+            <div class="col-md-7">
+                <a href="#">
+                    <img class="img-responsive" src="images/destinations/6.jpg" alt="">
+                </a>
+            </div>
+            <div class="col-md-5">
+                <h3>Kandy, Sri Lanka</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
+                <a class="btn btn-primary" href="#">Read More</a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Project Seven -->
+        <div class="row">
+
+            <div class="col-md-7">
+                <a href="#">
+                    <img class="img-responsive" src="images/destinations/7.jpg" alt="">
+                </a>
+            </div>
+            <div class="col-md-5">
+                <h3>Nuwara Eliya – The City of Lights</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
+                <a class="btn btn-primary" href="#">Read More</a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Project eight -->
+        <div class="row">
+
+            <div class="col-md-7">
+                <a href="#">
+                    <img class="img-responsive" src="images/destinations/8.jpg" alt="">
+                </a>
+            </div>
+            <div class="col-md-5">
+                <h3>Sinharaja Forest Reserve, Sri Lanka</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
+                <a class="btn btn-primary" href="#">Read More</a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+
+
+    </div>
+</div>
+<!-- Destination Discription  end -->
+
+<!-- Pagination -->
+<div class="container">
+    <div class="row text-center">
+        <div class="col-lg-12">
+            <ul class="pagination">
+                <li>
+                    <a href="#">&laquo;</a>
+                </li>
+                <li class="active">
+                    <a href="destinations.php">1</a>
+                </li>
+                <li>
+                    <a href="destinations-2.php">2</a>
+                </li>
+                <li>
+                    <a href="#">&raquo;</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- /.row -->
+
+
+
+
+
+
 
   
 <?php include "footer.php"; ?>

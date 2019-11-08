@@ -1,25 +1,67 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<?php $bodyId = "contact" ?>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title></title>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	<link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <script src="js/prefixfree.min.js" type="text/javascript"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body id="contact">
+<?php include "header.php"; ?>
+
+
 
 <!-- header start -->
 <header>
 <?php include "navigation.php"; ?><!-- Headder Nav Bar End-->
 </header>
 <!-- header end -->
- <!-- Home Contend  start -->
-<?php include "includes/content/contact.php"; ?>
-<!-- Home Contend  end -->
+
+
+<!-- Page  headder  div start -->
+
+
+<div class="contact pages">
+    <div class="contact container">
+        <h1>Contact Us</h1>
+    </div>
+</div>
+<!-- page headder div end -->
+
+<div class="con-itb pages">
+    <div class="con-itb container" >
+        <div class="row">
+            <!-- Contact Form Section start -->
+            <div class="cf col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <form role="form" action="" method="post">
+                    <h3 >Send your Inquiry</h3>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" type="textarea" id="message" placeholder="Message" maxlength="140" rows="7"></textarea>                    
+                    </div>
+
+                    <button type="reset" id="reset" name="reset" class="btn btn-danger ">Reset Form</button>&nbsp;
+                    <button type="submit" id="submit" name="submit" class="btn btn-primary submit pull-right">Submit Form</button>
+
+                </form>
+            </div>
+            <!-- Contact Form Section End -->
+
+
+            
+
+
+            
+        </div>
+    </div>
+</div>
+<!-- page Discription end -->
+
+
 
   
 <?php include "footer.php"; ?>

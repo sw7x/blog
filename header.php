@@ -11,15 +11,7 @@
     <script src="js/prefixfree.min.js" type="text/javascript"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body id="Gallery">
+<body id="<?php echo $bodyId;?>">
 
 
 
-<!-- <body id="Accommodation">
-<body id="contact">
-<body id="Destinations-2">
-<body id="Destinations">
-<body id="home">
-<body id="Packages">
-<body id="Packages">
-<body id="Packages"> -->

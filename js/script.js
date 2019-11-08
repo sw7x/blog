@@ -1,7 +1,7 @@
 $(function () {
 
     $("#home a:contains('Home')").parent().addClass("active");
-    $("#Teen-and-summer-holidays a:contains('teen and summer holidays')").parent().addClass("active");
+    
     $("#Destinations a:contains('Destinations')").parent().addClass("active"); 
 	$("#Destinations-2 a:contains('Destinations')").parent().addClass("active");
 	$("#Packages a:contains('Tour packages')").parent().addClass("active");
@@ -9,7 +9,8 @@ $(function () {
 	$("#Gallery a:contains('Gallery')").parent().addClass("active");
 	$("#contact a:contains('Contact us')").parent().addClass("active");
 	
-   
+    $("#teen-and-summer-holidays a:contains('Teen age summer holidays')").parent().addClass("active");
+    
    
      $('#characterLeft').text('140 characters left');
     $('#message').keydown(function () {
