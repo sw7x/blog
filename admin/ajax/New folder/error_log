@@ -1,4 +1,0 @@
-[27-Aug-2015 17:14:11 UTC] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in /home/speedeel/public_html/admin/ajax/stores-ajax.php on line 193
-[27-Aug-2015 17:14:40 UTC] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in /home/speedeel/public_html/admin/ajax/stores-ajax.php on line 193
-[27-Aug-2015 17:16:50 UTC] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in /home/speedeel/public_html/admin/ajax/stores-ajax.php on line 193
-[28-Aug-2015 21:51:11 UTC] PHP Warning:  mysql_num_rows() expects parameter 1 to be resource, boolean given in /home/speedeel/public_html/admin/ajax/stores-ajax.php on line 193

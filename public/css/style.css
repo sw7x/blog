@@ -1,0 +1,221 @@
+﻿/* DEFAULTS
+----------------------------------------------------------*/
+@import url(http://fonts.googleapis.com/css?family=Oxygen:400,700,300);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic);
+@import url(http://fonts.googleapis.com/css?family=Patua+One);
+@import url(http://fonts.googleapis.com/css?family=Slabo+27px);
+
+/**  Basic Page CSS **/
+body{
+  font-family: 'Slabo 27px', serif;
+  font-weight: 300;
+  font-size: 2em;
+  position: relative;
+}
+
+h1 ,h3{
+  font-family: 'Patua One', cursive; text-transform:capitalize;}
+
+ h2,, h4, h5, h6 {
+  font-family: 'Oxygen', sans-serif;
+  font-weight: 100;
+  margin: 0;
+}
+
+img {
+	max-width: 200px;
+}
+
+/**  Headder Nav bar start**/
+.navbar{ background-color: White; border:0;font-family: 'Open Sans Condensed', sans-serif; min-height:90px;border-radius:0; border-top:solid 5px #0F7DC1; border-bottom:solid 5px #0F7DC1; padding-bottom:0!important;}
+.navbar-brand {padding-top:5px !important;}
+.navbar-default .navbar-nav>li {  padding: 30px 10px 10px 10px;position: relative;}
+.navbar-default .navbar-nav>li>a { padding:0!important; text-transform:uppercase; font-weight:bold; font-size:14px; color:Gray; }
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {color: #555;background-color: transparent; border-bottom:solid 3px #0F7DC1;}
+.navbar-default .navbar-nav>li>a:hover,.navbar-default .navbar-nav>li>a:focus,.navbar-default .navbar-nav>li>a:hover { color: Black; background-color: transparent;border-bottom:solid 3px #0F7DC1;}
+
+/**  Navbar Toggle  start**/
+.navbar-toggle { background-color:#0F7DC1; color:White;}
+.navbar-default .navbar-toggle .icon-bar {background-color: white;}
+.navbar-brand>img {display: block; padding-top:10px;max-width: 300px;}
+.navbar-toggle:focus, .navbar-default .navbar-toggle:hover {background-color: #0F7DC1 !important;}
+
+/**  Navbar Toggle  end**/
+ @media (max-width:1200px)
+{
+ .navbar-default .navbar-nav>li>a { font-size:13px;}
+ .navbar-brand {padding-top:15px !important;}
+ .navbar-brand>img {max-width: 140px;}
+
+ }
+  @media (max-width:992px)
+{
+     .navbar-default .navbar-nav>li {  padding: 30px 8px 8px 8px;position: relative;}
+     .navbar-default .navbar-nav>li>a { font-size:10px;}
+     .navbar-brand {padding-top:15px !important;}
+     .navbar-brand>img {max-width: 110px;}
+ }
+  @media (max-width:767px)
+{
+ .nav.navbar-nav.navbar-right{ background-color:#ffffff!important;}
+ .navbar-brand {padding-top:0px !important;}
+ .navbar-brand>img {max-width:200px;}
+ .navbar-default .navbar-collapse, .navbar-default .navbar-form {border-color: #0F7DC1;}
+ .navbar-default .navbar-nav>li {  padding:0px;position: relative; margin-bottom:1px;}
+ .navbar-default .navbar-nav>li>a { padding:10px!important; text-transform:uppercase; font-weight:bold; font-size:14px; color:Gray; }
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover { border:0; background-color:#0F7DC1; color:White; }
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover { border:0;background-color:#0F7DC1; color:#ffffff;}
+ }
+/**  Headder Nav bar end**/
+/**  welcome note div start**/
+.wel.pages{ padding-bottom:20px;}
+.wel.container h1{ text-align:center;}
+.wel.container p{ text-align:center;}
+/**  welcome note div end**/
+
+/**  Thing to do div start**/
+.thi.pages{ background-color:#D6F0FF; padding-bottom:20px;}
+.thi.container h1{ text-align:center; padding-bottom:10px; }
+.thi.container p{ text-align:center;}
+.thi-D{ text-align:center;width:100%; display:block; padding-top:8px; color:Black;}
+.thi-D:hover{ text-decoration:underline; color:Black;}
+.col-md-3.col-sm-3.col-xs-6.portfolio-item{}
+  @media (max-width:767px)
+{
+.col-md-3.col-sm-3.col-xs-6.portfolio-item{ padding-bottom:10px;}
+ }
+   @media (max-width:320px)
+{
+.col-md-3.col-sm-3.col-xs-6.portfolio-item{ width:100%;}
+ }
+/** Thing to do div end**/
+
+/**  Packages div start**/
+.pack.pages{ background-color: White; padding-bottom:20px;}
+.pack.container h1{ text-align:center; padding-bottom:10px; }
+.pack.container p{ text-align:center;}
+.pack-D{ text-align:center;width:100%; display:block; padding-top:8px; color:Black;}
+.pack-D:hover{ text-decoration:underline; color:Black;}
+
+/** Packages div end**/
+/**  Footer start  **/
+footer{}
+.foot.pages{ background-color:#f0f0f0; padding-bottom:20px;}
+.foot.col-md-3.col-sm-6.col-xs-12{}
+.foot.col-md-3.col-sm-6.col-xs-12 h3{ color:#313030; padding-top:5px; padding-bottom:5px;}
+.foot.col-md-3.col-sm-6.col-xs-12 p{ color:#313030; font-size:15px; padding:0;}
+.foots.col-md-3.col-sm-6.col-xs-12 h3{ color:#313030; padding-top:5px; padding-bottom:5px;}
+.foots.col-md-3.col-sm-6.col-xs-12 a{ color:#313030; font-size:15px; padding:0; width:100%; display:block; padding-bottom:5px;}
+
+.foot.col-md-3.col-sm-6.col-xs-12 span{ color:#313030; font-size:15px;}
+.followUs { padding-bottom:10px; padding-top:-50px !important; }
+.followUs a {display: inline-block;width: 40px;height: 40px;border-radius: 50%;font-size: 20px;text-align: center;color: #FFF;background:#313030;padding-top: 10px;margin-right: 5px;position: relative;}
+ @media (max-width:768px)
+{
+.foot.col-md-3.col-sm-6.col-xs-12{ width:33.33%;}
+.foots.col-md-3.col-sm-4.col-xs-12{ width:33.33%;}
+.wdb{ float:left!important;}
+ }
+  @media (max-width:650px)
+{
+.foot.col-md-3.col-sm-6.col-xs-12{ width:100%;}
+.foots.col-md-3.col-sm-6.col-xs-12{ width:100%;}
+ }
+ .webe.pagess{ background-color:#0F7DC1;}
+/**  Footer end  **/
+
+footer .navbar-default{ background-color:transparent;}
+.pages{ padding:50;}
+.page{ padding:60px 0;}
+.page h2 { text-align:center;}
+.navbar { margin-bottom:0px !important; }
+.carousel-caption { margin-top:0px !important }
+
+/**  Contact us page Start  **/
+.contact.pages{ padding-bottom:20px;}
+.contact.container h1{ text-align: left; }
+.con-itb.pages{ padding-bottom:20px;}
+.con-itb.container h1{ text-align: left; }
+.conb.col-lg-6.col-md-6.col-sm-6.col-xs-12{ background-color:#0F0; }
+.conb1.col-lg-5.col-md-5.col-sm-5.col-xs-12{ background-color: #C06; height:230px;}
+.conb1.col-lg-5.col-md-5.col-sm-5.col-xs-12 img{height:100%;}
+.conb2.col-lg-7.col-md-7.col-sm-7.col-xs-12 p{ font-size:16px;}
+.btn.submit{ color:white; background-color:#d57606;}
+
+/** Destinations page Start  **/
+/** tour Packages page Start  **/
+.tp.btn.btn-primary{ background-color:#d57606; border:none; font-size:25px; text-align:right; cursor:default;}
+.tp.col-md-5 h3{ color:#337ab7;}
+.tp.col-md-5 p{ font-size:15px; padding-top:10px;}
+.tp.col-md-5 span{ width:100%; font-size:18px; padding-bottom:10px;}
+.tp.col-md-5 span font{ color:#337ab7;}
+.tprm.btn.btn-primary{border:none; background-color:silver; color:#000; margin-top:10px;}
+/** Accommodation page Start  **/
+.acc.col-md-5 h3{ color:#337ab7;  margin-top:5px;}
+.acc.col-md-5 span{ width:100%; font-size:18px; padding-bottom:10px; color:#d57606; font-weight:bold;}
+.acc.col-md-5 span font{ color:#666;}
+.acc.col-md-5 p{ font-size:15px; padding-top:10px;}
+/** Gallery page Start  **/
+/**  Contact Page start  **/
+.btn-default {color:#ffffff;background-color: #ff0000;border-color: #ccc;}
+.btn-default:hover {color:#ffffff;background-color: #000000;border-color: #ccc;}
+.con-itb.pages h3{color:#000000; padding-bottom:15px;}
+.Contact_page.pagesd p{color:#210f03;}
+.Contact_page.pagesd p strong{color:#ff0000;}
+.Contact_page.pagesd label{color:#ff0000;}
+.contact-form .error{ font-size: 12px;color: red;}
+/**  Contact Page end  **/
+
+/**  404 Page start  **/
+.page404 {
+    background-color: #007aff;
+    color: #fff;
+    font-size: 100%;
+    line-height: 1.5;
+    font-family: "Roboto", sans-serif;
+}
+
+.page404 .button {
+    font-weight: 300;
+    color: #fff;
+    font-size: 1.2em;
+    text-decoration: none;
+    border: 1px solid #efefef;
+    padding: .5em;
+    border-radius: 3px;
+    float: left;
+    margin: 6em 0 0 -155px;
+    position: relative;
+    transition: all .3s linear;
+    background-color: #007aff;
+}
+
+.page404 .button.left{
+    left: 30%;
+}
+
+.page404 .button.right{
+    left: 60%;
+}
+
+.page404 .button:hover {
+    background-color: #f7fafb;
+    color: #007aff;
+}
+
+.page404 p{
+    font-size: 2em;
+    text-align: center;
+    font-weight: 100;
+}
+
+.page404 h1{
+    text-align: center;
+    font-size: 15em;
+    font-weight: 100;
+    text-shadow: #0062cc 1px 1px, #0062cc 2px 2px, #0062cc 3px 3px, #0062cd 4px 4px, #0062cd 5px 5px, #0062cd 6px 6px, #0062cd 7px 7px, #0062ce 8px 8px, #0063ce 9px 9px, #0063ce 10px 10px, #0063ce 11px 11px, #0063cf 12px 12px, #0063cf 13px 13px, #0063cf 14px 14px, #0063cf 15px 15px, #0063d0 16px 16px, #0064d0 17px 17px, #0064d0 18px 18px, #0064d0 19px 19px, #0064d1 20px 20px, #0064d1 21px 21px, #0064d1 22px 22px, #0064d1 23px 23px, #0064d2 24px 24px, #0065d2 25px 25px, #0065d2 26px 26px, #0065d2 27px 27px, #0065d3 28px 28px, #0065d3 29px 29px, #0065d3 30px 30px, #0065d3 31px 31px, #0065d4 32px 32px, #0065d4 33px 33px, #0066d4 34px 34px, #0066d4 35px 35px, #0066d5 36px 36px, #0066d5 37px 37px, #0066d5 38px 38px, #0066d5 39px 39px, #0066d6 40px 40px, #0066d6 41px 41px, #0067d6 42px 42px, #0067d6 43px 43px, #0067d7 44px 44px, #0067d7 45px 45px, #0067d7 46px 46px, #0067d7 47px 47px, #0067d8 48px 48px, #0067d8 49px 49px, #0068d8 50px 50px, #0068d9 51px 51px, #0068d9 52px 52px, #0068d9 53px 53px, #0068d9 54px 54px, #0068da 55px 55px, #0068da 56px 56px, #0068da 57px 57px, #0068da 58px 58px, #0069db 59px 59px, #0069db 60px 60px, #0069db 61px 61px, #0069db 62px 62px, #0069dc 63px 63px, #0069dc 64px 64px, #0069dc 65px 65px, #0069dc 66px 66px, #006add 67px 67px, #006add 68px 68px, #006add 69px 69px, #006add 70px 70px, #006ade 71px 71px, #006ade 72px 72px, #006ade 73px 73px, #006ade 74px 74px, #006bdf 75px 75px, #006bdf 76px 76px, #006bdf 77px 77px, #006bdf 78px 78px, #006be0 79px 79px, #006be0 80px 80px, #006be0 81px 81px, #006be0 82px 82px, #006be1 83px 83px, #006ce1 84px 84px, #006ce1 85px 85px, #006ce1 86px 86px, #006ce2 87px 87px, #006ce2 88px 88px, #006ce2 89px 89px, #006ce2 90px 90px, #006ce3 91px 91px, #006de3 92px 92px, #006de3 93px 93px, #006de3 94px 94px, #006de4 95px 95px, #006de4 96px 96px, #006de4 97px 97px, #006de4 98px 98px, #006de5 99px 99px, #006ee5 100px 100px, #006ee5 101px 101px, #006ee6 102px 102px, #006ee6 103px 103px, #006ee6 104px 104px, #006ee6 105px 105px, #006ee7 106px 106px, #006ee7 107px 107px, #006ee7 108px 108px, #006fe7 109px 109px, #006fe8 110px 110px, #006fe8 111px 111px, #006fe8 112px 112px, #006fe8 113px 113px, #006fe9 114px 114px, #006fe9 115px 115px, #006fe9 116px 116px, #0070e9 117px 117px, #0070ea 118px 118px, #0070ea 119px 119px, #0070ea 120px 120px, #0070ea 121px 121px, #0070eb 122px 122px, #0070eb 123px 123px, #0070eb 124px 124px, #0071eb 125px 125px, #0071ec 126px 126px, #0071ec 127px 127px, #0071ec 128px 128px, #0071ec 129px 129px, #0071ed 130px 130px, #0071ed 131px 131px, #0071ed 132px 132px, #0071ed 133px 133px, #0072ee 134px 134px, #0072ee 135px 135px, #0072ee 136px 136px, #0072ee 137px 137px, #0072ef 138px 138px, #0072ef 139px 139px, #0072ef 140px 140px, #0072ef 141px 141px, #0073f0 142px 142px, #0073f0 143px 143px, #0073f0 144px 144px, #0073f0 145px 145px, #0073f1 146px 146px, #0073f1 147px 147px, #0073f1 148px 148px, #0073f1 149px 149px, #0074f2 150px 150px, #0074f2 151px 151px, #0074f2 152px 152px, #0074f3 153px 153px, #0074f3 154px 154px, #0074f3 155px 155px, #0074f3 156px 156px, #0074f4 157px 157px, #0074f4 158px 158px, #0075f4 159px 159px, #0075f4 160px 160px, #0075f5 161px 161px, #0075f5 162px 162px, #0075f5 163px 163px, #0075f5 164px 164px, #0075f6 165px 165px, #0075f6 166px 166px, #0076f6 167px 167px, #0076f6 168px 168px, #0076f7 169px 169px, #0076f7 170px 170px, #0076f7 171px 171px, #0076f7 172px 172px, #0076f8 173px 173px, #0076f8 174px 174px, #0077f8 175px 175px, #0077f8 176px 176px, #0077f9 177px 177px, #0077f9 178px 178px, #0077f9 179px 179px, #0077f9 180px 180px, #0077fa 181px 181px, #0077fa 182px 182px, #0077fa 183px 183px, #0078fa 184px 184px, #0078fb 185px 185px, #0078fb 186px 186px, #0078fb 187px 187px, #0078fb 188px 188px, #0078fc 189px 189px, #0078fc 190px 190px, #0078fc 191px 191px, #0079fc 192px 192px, #0079fd 193px 193px, #0079fd 194px 194px, #0079fd 195px 195px, #0079fd 196px 196px, #0079fe 197px 197px, #0079fe 198px 198px, #0079fe 199px 199px, #007aff 200px 200px;
+}
+/**  404 Page start  **/
+
+
+
