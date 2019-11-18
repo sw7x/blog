@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
@@ -25,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin/dashboard';
 
     /**
      * Create a new controller instance.
@@ -36,4 +39,56 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+
+    public function showLoginForm()
+    {
+        //dd('111rrr');
+        //Auth::logout();
+        //dd('ddd');
+        return redirect('admin');
+        //return view('auth.login');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('admin');
+        //dd('wwww');
+    }
+
+    public function login(Request $request){
+
+
+
+        $validator = Validator::make($request->all(),[
+            'admin_name'         => 'required',
+            'admin_pass'         => 'required'
+            ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }else{
+            //dd('fff');
+
+            if(Auth::attempt([
+                'name' => $request->input('admin_name'),
+                'password' => $request->input('admin_pass')
+            ])){
+                //dd('login success');
+                return redirect()->route('admin.dashboard');
+            }
+
+            //dd('failed');
+            return redirect()->back()->with('message','Authentication failed');
+            //->route('admin.index');
+            //return view('admin.index');
+            //return back();
+        }
+
+
+
+
+    }
+
 }
