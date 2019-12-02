@@ -89,10 +89,13 @@ else
                     <div class="login-title">LOGIN</div>
                     <?php //var_dump (Auth::check()); ?>
                     <?php //var_dump (app('request')->path()); ?>
-                    @if(Session('message'))
-                        {{Session::get('message')}}
+                    
 
-                    @endif
+                    @if(Session('message'))
+                    <div class="login-title" style="color:red;font-weight: bold;">{{Session::get('message')}}</div>
+                    @endif                   
+
+
                     <form action="{{route('admin.login.submit')}}" class="form-horizontal" method="post" autocomplete="off">
                         <div class="form-group">
                             <div class="col-md-12">
@@ -122,8 +125,8 @@ else
                         {{ csrf_field() }}
                     </form>
 
-                    <a href="{{route('admin.password.request')}}" >Forget password</a><br>
-                    <a href="{{route('admin.register')}}" >Register</a>
+{{--                    <a href="{{route('admin.password.request')}}" >Forget password</a><br>--}}
+{{--                    <a href="{{route('admin.register')}}" >Register</a>--}}
 
                 </div>
 

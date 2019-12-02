@@ -87,3 +87,21 @@ $(document).on('click', 'input[name="change_password_submit"]', function (event)
 
 
 });
+
+
+$(document).on('change', '.sazzad-file-upload input[type="file"]', function(event) {
+    // Does some stuff and logs the event to the console
+    var filename = $('.sazzad-file-upload input[type="file"]').val();
+    var filenameaa = $(this).val();
+    if (/^\s*$/.test(filename)) {
+        $(".sazzad-file-upload").removeClass('active');
+        $(".sazzad-file-upload #noFile").text("No file chosen...");
+    }
+    else {
+        $(".sazzad-file-upload").addClass('active');
+        $(".sazzad-file-upload #noFile").text(filename.replace("C:\\fakepath\\", ""));
+    }
+});
+
+
+

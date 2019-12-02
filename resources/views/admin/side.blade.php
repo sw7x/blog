@@ -19,58 +19,61 @@
                                 <img src="{{ URL::to('/admin') }}/img/tlogo.png" alt="John Doe" style="border-radius: 0%;background-color: #fff;width: 100%;"/>
                             </div>
                             <div class="profile-data">
-                                <div class="profile-data-name">User Name</div>
-                                <div class="profile-data-title">ADMIN</div>
+                                <div class="profile-data-title">User Name</div>
+                                <div class="profile-data-name">{{ Auth::user()->name }}</div>
                             </div>
                         </div>
                     </li>
 
-                    <li class="active">
+
+
+                    <!-- {{Route::currentRouteName()}} -->  
+
+
+
+                    <li class="{{ Route::is('admin.dashboard') ? 'active' : '' }}">
                         <a href="{{route('admin.dashboard')}}" class="sidebar_menu_item sidebar_link_highlight'>
                             <span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span>
                         </a>
                     </li>
 
 
-                    <li class="">
+                    <li class="{{ Route::is('admin.home-slider') ? 'active' : '' }}">
                         <a href="{{route('admin.home-slider')}}" class="sidebar_menu_item sidebar_link_highlight'>
                             <span class="fa fa-desktop"></span> <span class="xn-text">Home Slider</span>
                         </a>
                     </li>
 
-                    <li class="">
+                    <li class="{{ Route::is('admin.packages') ? 'active' : '' }}">
                         <a href="{{route('admin.packages')}}" class="sidebar_menu_item sidebar_link_highlight'>
                             <span class="fa fa-desktop"></span> <span class="xn-text">Tour Packages</span>
                         </a>
                     </li>
 
+                    <!-- 
+
+                    /*route('admin.destinations')*/
+                    
+                    
                     <li class="">
-                        <a href="{{route('admin.destinations')}}" class="sidebar_menu_item sidebar_link_highlight'>
+                        <a href="" class="sidebar_menu_item sidebar_link_highlight'>
                             <span class="fa fa-desktop"></span> <span class="xn-text">Destinations</span>
                         </a>
                     </li>
 
+                    /*route('admin.hotels')*/
                     <li class="">
-                        <a href="{{route('admin.hotels')}}" class="sidebar_menu_item sidebar_link_highlight'>
+                        <a href="" class="sidebar_menu_item sidebar_link_highlight'>
                             <span class="fa fa-desktop"></span> <span class="xn-text">Accommodation (Hotels)</span>
                         </a>
                     </li>
+                    -->
 
-                    <li class="">
+                    <li class="{{ Route::is('admin.contact') ? 'active' : '' }}">
                         <a href="{{route('admin.contact')}}" class="sidebar_menu_item sidebar_link_highlight'>
                             <span class="fa fa-desktop"></span> <span class="xn-text">Contact Form</span>
                         </a>
-                    </li>
-
-
-
-
-
-                    <!--
-                    <li class="active">
-                        <a href="manage-category.php" class="sidebar_menu_item <?php if($page=='manage-category'){echo 'sidebar_link_highlight';}?>"><span class="fa fa-th"></span> <span class="xn-text">Manage Category</span></a>
-                    </li>
-                     -->
+                    </li>                  
 
 
                 </ul>

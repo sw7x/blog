@@ -35,7 +35,7 @@
 	        <div class="row">
 	            <div class="tp col-md-7">
                     <a href="{{route('packages.index')}}/{{$data->id}}">
-	                    <img class="img-responsive"  src="{{ URL::to('/') }}/images/package/{{$data->image}}" alt="">
+	                    <img class="eeee img-responsive"  src="{{ URL::to('/storage/package_images') }}/{{$data->image}}" alt="">
 	                </a>
 	            </div>
 	            <div class="tp col-md-5">

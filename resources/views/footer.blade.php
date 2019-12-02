@@ -65,7 +65,7 @@
 <script src="{{ URL::to('/') }}/js/jquery.min.js" type="text/javascript"></script>
 <script src="{{ URL::to('/') }}/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="{{ URL::to('/') }}/js/script.js" type="text/javascript"></script>
-
+<script src='https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js'></script>
 <script src="https://www.google.com/recaptcha/api.js"></script>
 <script type="text/javascript">
 
@@ -94,6 +94,30 @@
 		//event.preventDefault();
 	});
 
+
+
+    $(document).ready(function(){
+        $('.image-popup-vertical-fit').magnificPopup({
+            type: 'image',
+            mainClass: 'mfp-with-zoom', 
+            gallery:{
+               enabled:true
+            },
+
+            zoom: {
+                enabled: true, 
+
+                duration: 300, // duration of the effect, in milliseconds
+                easing: 'linear', // CSS transition easing function
+
+                opener: function(openerElement) {
+                  return openerElement.is('img') ? openerElement : openerElement.find('img');
+                }
+            }
+
+        });
+
+    });
 
 
 </script>

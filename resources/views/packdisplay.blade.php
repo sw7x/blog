@@ -27,7 +27,7 @@
             <div class="row">
                 <div class="tp col-md-7">
                     <a href="#">
-                        <img class="img-responsive"  src="{{ URL::to('/') }}/images/package/{{$record['image']}}" alt="">
+                        <img class="img-responsive"  src="{{ URL::to('/storage/package_images') }}/{{$record['image']}}" alt="">
                     </a>
                 </div>
                 <div class="tp col-md-5">
@@ -40,16 +40,35 @@
             <div class="row" style="padding-top:20px;">
                 <div class="tp col-md-12">
                     <p>{{$record['discription']}}</p>
-                    <h3>Tour Highlights</h3>
-                    <ul>
-                        <li>{{$record['highlights1']}}</li>
-                        <li>{{$record['highlights2']}}</li>
-                        <li>{{$record['highlights3']}}</li>
-                        <li>{{$record['highlights4']}}</li>
-                        @if($record['highlights5'] !== '')
-                            <li>{{$record['highlights5']}}</li>
-                        @endif
-                    </ul>
+
+                    @if($record['highlights1'] != '' ||
+                        $record['highlights2'] != '' ||
+                        $record['highlights3'] != '' ||
+                        $record['highlights4'] != '' ||
+                        $record['highlights5'] != '')
+                        <h3>Tour Highlights</h3>
+                        <ul>
+                            @if($record['highlights1'] != '')
+                            <li>{{$record['highlights1']}}</li>
+                            @endif
+
+                            @if($record['highlights2'] != '')
+                                <li>{{$record['highlights2']}}</li>
+                            @endif
+
+                            @if($record['highlights3'] != '')
+                            <li>{{$record['highlights3']}}</li>
+                            @endif
+
+                            @if($record['highlights4'] != '')
+                            <li>{{$record['highlights4']}}
+                            @endif
+
+                            @if($record['highlights5'] != '')
+                                <li>{{$record['highlights5']}}</li>
+                            @endif
+                        </ul>
+                    @endif
                 </div>
             </div>
 

@@ -16,7 +16,7 @@ class PackageController extends Controller
         $package->aaa();
 
         //$result = $package::get();
-        $result = $package::orderBy('id','desc')->paginate(1);
+        $result = $package::orderBy('id','asc')->paginate(5);
         //dd($cRecord);
 
     	return view('packages')->with('records', $result);

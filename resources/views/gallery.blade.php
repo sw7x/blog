@@ -28,52 +28,52 @@
         <div class="row">
             
             <!-- Image Block 1 start -->
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="{{ URL::to('/') }}/images/accommodation/1.jpg" data-lightbox="Test" data-title="">
+            <div class="col-lg-6 col-md-4 col-xs-6 thumb mfp-with-zoom">
+                <a class="image-popup-vertical-fit thumbnail" href="{{ URL::to('/') }}/images/accommodation/1.jpg" data-lightbox="Test" data-title="">
                     <img class="img-responsive" src="{{ URL::to('/') }}/images/accommodation/1.jpg" alt="">
                 </a>
             </div>  <!-- 1 Image -->
 
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="{{ URL::to('/') }}/images/accommodation/2.jpg" data-lightbox="Test" data-title="">
+            <div class="col-lg-6 col-md-4 col-xs-6 thumb mfp-with-zoom">
+                <a class="image-popup-vertical-fit thumbnail" href="{{ URL::to('/') }}/images/accommodation/2.jpg" data-lightbox="Test" data-title="">
                     <img class="img-responsive" src="{{ URL::to('/') }}/images/accommodation/2.jpg" alt="">
                 </a>
             </div>  <!-- 2 Image -->
 
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="{{ URL::to('/') }}/images/accommodation/3.jpg" data-lightbox="Test" data-title="">
+            <div class="col-lg-6 col-md-4 col-xs-6 thumb mfp-with-zoom">
+                <a class="thumbnail image-popup-vertical-fit" href="{{ URL::to('/') }}/images/accommodation/3.jpg" data-lightbox="Test" data-title="">
                     <img class="img-responsive" src="{{ URL::to('/') }}/images/accommodation/3.jpg" alt="">
                 </a>
             </div>  <!-- 3 Image -->
 
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="{{ URL::to('/') }}/images/accommodation/4.jpg" data-lightbox="Test" data-title="">
+            <div class="col-lg-6 col-md-4 col-xs-6 thumb mfp-with-zoom">
+                <a class="thumbnail image-popup-vertical-fit" href="{{ URL::to('/') }}/images/accommodation/4.jpg" data-lightbox="Test" data-title="">
                     <img class="img-responsive" src="{{ URL::to('/') }}/images/accommodation/4.jpg" alt="">
                 </a>
             </div>  <!-- 4 Image -->            
             <!-- Image Block 1 End -->
 
             <!-- Image Block 2 start -->
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="{{ URL::to('/') }}/images/accommodation/5.jpg" data-lightbox="Test" data-title="">
+            <div class="col-lg-6 col-md-4 col-xs-6 thumb  mfp-with-zoom">
+                <a class="thumbnail image-popup-vertical-fit" href="{{ URL::to('/') }}/images/accommodation/5.jpg" data-lightbox="Test" data-title="">
                     <img class="img-responsive" src="{{ URL::to('/') }}/images/accommodation/5.jpg" alt="">
                 </a>
             </div>  <!-- 1 Image -->
 
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="{{ URL::to('/') }}/images/accommodation/6.jpg" data-lightbox="Test" data-title="">
+            <div class="col-lg-6 col-md-4 col-xs-6 thumb  mfp-with-zoom">
+                <a class="thumbnail image-popup-vertical-fit" href="{{ URL::to('/') }}/images/accommodation/6.jpg" data-lightbox="Test" data-title="">
                     <img class="img-responsive" src="{{ URL::to('/') }}/images/accommodation/6.jpg" alt="">
                 </a>
             </div>  <!-- 2 Image -->
 
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="{{ URL::to('/') }}/images/accommodation/7.jpg" data-lightbox="Test" data-title="">
+            <div class="col-lg-6 col-md-4 col-xs-6 thumb  mfp-with-zoom">
+                <a class="thumbnail image-popup-vertical-fit" href="{{ URL::to('/') }}/images/accommodation/7.jpg" data-lightbox="Test" data-title="">
                     <img class="img-responsive" src="{{ URL::to('/') }}/images/accommodation/7.jpg" alt="">
                 </a>
             </div>  <!-- 3 Image -->
 
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="{{ URL::to('/') }}/images/accommodation/8.jpg" data-lightbox="Test" data-title="">
+            <div class="col-lg-6 col-md-4 col-xs-6 thumb  mfp-with-zoom">
+                <a class="thumbnail image-popup-vertical-fit" href="{{ URL::to('/') }}/images/accommodation/8.jpg" data-lightbox="Test" data-title="">
                     <img class="img-responsive" src="{{ URL::to('/') }}/images/accommodation/8.jpg" alt="">
                 </a>
             </div>  <!-- 4 Image -->
@@ -85,7 +85,7 @@
 </div>    
 <!-- Tour Packages  Discription  end -->
 
-<!-- Pagination -->
+<!-- Pagination 
 <div class="container">
     <div class="row text-center">
         <div class="col-lg-12">
@@ -105,7 +105,7 @@
             </ul>
         </div>
     </div>
-</div>
+</div>-->
 <!-- /.row -->
 
 

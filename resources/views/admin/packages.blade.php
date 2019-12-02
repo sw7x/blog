@@ -24,7 +24,7 @@ $page ='admin.packages';
 
                 <div class="table-responsive">
 
-                    <div id="storeTableContainer"></div>
+                    <div id="packagesTableContainer"></div>
 
                 </div>
 

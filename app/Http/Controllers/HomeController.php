@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\HomeSlider;
+
+
 
 class HomeController extends Controller
 {
@@ -13,16 +16,17 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
+
+
     public function index()
-    {
-        return view('home');
+    {       
+
+        //get slider images
+        $sliderImageRows     = HomeSlider::where('enable', true)->get();
+        //dd($sliderImageRows);
+        return view('index')->with('sliderImages',$sliderImageRows);
     }
 }

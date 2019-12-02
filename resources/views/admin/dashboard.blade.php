@@ -11,8 +11,6 @@ $page ='admin.dashboard';
 
         @include('admin.navigation')
 
-
-
         <!-- PAGE CONTENT WRAPPER -->
         <div class="page-content-wrap">
             <div class="_container col-md-12">
@@ -22,46 +20,23 @@ $page ='admin.dashboard';
                     <?php //var_dump (session()->all()); ?>
                     <table class="table table-hover table-bordered" style="font-size: 14px;color:#000;font-weight: bold;">
                         <tr>
-                            <th>Entity</th>
-                            <th>Rows</th>
+                            <th style="background-color:#d6dfe6">Entity</th>
+                            <th style="background-color:#d6dfe6">Rows</th>
                         </tr>
                         <tr>
-                            <td>PRODUCT CATEGORIES</td>
-                            <td>44</td>
+                            <td>Home Slider</td>
+                            <td>{{$data['homeSlider']}}</td>
                         </tr>
-                         <tr>
-                            <td>STORES</td>
-                             <td>44</td>
+                        <tr>
+                            <td>Tour Packages</td>
+                             <td>{{$data['package']}}</td>
                         </tr>
-                         <tr>
-                            <td>PRODUCTS</td>
-                            <td>44</td>
+                        <tr>
+                            <td>Inquiries</td>
+                            <td>{{$data['inquiry']}}</td>
                         </tr>
-                         <tr>
-                            <td>DELIVERY GRIDS</td>
-                             <td>44</td>
-                         <tr>
-                            <td>SMOKERS ITEMS</td>
-                             <td>44</td>
-                        </tr>
-                         <tr>
-                            <td>GROCERY ITEMS</td>
-                             <td>44</td>
-                        </tr>
-                         <tr>
-                            <td>FUN ACCESSORIES ITEMS</td>
-                             <td>44</td>
-                        </tr>
-                         <tr>
-                            <td>EVENTS</td>
-                             <td>44</td>
-                        </tr>
-                         <tr>
-                            <td>USER COMMENTS</td>
-                            <td>44</td>
-                         </tr>
+                         
                     </table>
-
 
                 </div>
 

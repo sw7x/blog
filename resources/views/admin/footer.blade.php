@@ -50,19 +50,22 @@
                     listAction: function (postData, jtParams)
                     {
                         console.log("Loading from custom function...");
+						postData = {
+							"_token": "{{ csrf_token() }}",
+                        };
+
                         return $.Deferred(function ($dfd)
                         {
                             $.ajax({
-                                url: 'ajax/view-comment-ajax.php?action=list&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
-                                type: 'POST',
+                                url: 'contact/view?action=list&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
+								//url: 'contact/view',
+								type: 'POST',
                                 dataType: 'json',
                                 data: postData,
-                                success: function (data)
-                                {
+                                success: function (data){
                                     $dfd.resolve(data);
                                 },
-                                error: function ()
-                                {
+                                error: function (){
                                     $dfd.reject();
                                 }
                             });
@@ -70,7 +73,29 @@
                     },
                     // createAction: 'ajax/view-comment-ajax.php?action=create',
                     // updateAction: 'ajax/view-comment-ajax.php?action=update',
-                    deleteAction: 'ajax/view-comment-ajax.php?action=delete'
+                    //deleteAction: 'contact/delete'
+					deleteAction: function (postData, jtParams)
+					{
+						console.log("Loading from custom function...");
+						postData = {...postData,...{"_token": "{{ csrf_token() }}"}};
+
+						return $.Deferred(function ($dfd)
+						{
+							$.ajax({
+								//url: 'contact/view?action=list&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
+								url: 'contact/delete',
+								type: 'POST',
+								dataType: 'json',
+								data: postData,
+								success: function (data){
+									$dfd.resolve(data);
+								},
+								error: function (){
+									$dfd.reject();
+								}
+							});
+						});
+					},
                 },
                 fields: {
                     id: {
@@ -78,48 +103,50 @@
                         list: false,
                         title: 'id',
                     },
-                    fname: {
-                        title: 'Firstname',
-                        width: '15%'
-                    },
-                    lname: {
-                        title: 'Lastname',
-                        width: '15%'
+                    name: {
+                        title: 'Name',
+                        width: '20%'
                     },
                     email: {
                         title: 'E-Mail',
-                        width: '30%'
+                        width: '20%'
                     },
+					mobile: {
+						title: 'Mobile',
+						width: '10%'
+					},
+					subject: {
+						title: 'Subject',
+						width: '10%'
+					},
                     message: {
-                        title: 'message',
-                        width: '40%',
+                        title: 'Message',
+                        width: '30%',
                         sorting: false,
                     },
+					created_at: {
+						title: 'Submit at',
+						width: '10%'
+					},
                 }
-
         });
-
 
         $('#viewCommentTableContainer').jtable('load');
 
 
 
-        $('#storeTableContainer').jtable(
+        $('#packagesTableContainer').jtable(
         {
-            title: 'Stores Table',
-
-
+            title: 'packages Table',
             formCreated: function (event, data)
             {
                 data.form.attr('enctype','multipart/form-data');
-
             },
             formSubmitting: function(event, data)
             {
                 //filename = $('input[type=file]').val().split('\\').pop();
                 //alert(filename);
                 //alert($("#" + data.form.attr("id")).find('input[name="image"]').val(filename));
-
             },
             paging: true, //Enable paging
             pageSize: 10, //Set page size (default: 10)
@@ -131,11 +158,13 @@
                 listAction: function (postData, jtParams)
                 {
                     console.log("Loading from custom function...");
+					postData = {...postData,...{"_token": "{{ csrf_token() }}"}};
                     return $.Deferred(function ($dfd)
                     {
                         $.ajax({
-                            url: 'ajax/stores-ajax.php?action=list&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
-                            type: 'POST',
+                            //url: 'ajax/stores-ajax.php?action=list&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
+							url: 'packages/view?action=list&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
+							type: 'POST',
                             dataType: 'json',
                             data: postData,
                             success: function (data)
@@ -149,21 +178,20 @@
                         });
                     });
                 },
-
                 //createAction: 'ajax/store-ajax.php?action=create',
                 createAction: function (postData)
                 {
                     var formData = getVars(postData);
 
-                    if($('#storeimg_upload').val() !== "")
-                    {
-                        formData.append("storeimg", $('#storeimg_upload').get(0).files[0]);
+                    if($('#packageImg_upload').val() !== ""){
+                        formData.append("packageImg", $('#packageImg_upload').get(0).files[0]);
                     }
+					formData.append("_token", '{{ csrf_token() }}');
 
                     return $.Deferred(function ($dfd)
                     {
                         $.ajax({
-                            url: 'ajax/stores-ajax.php?action=create',
+                            url: 'packages/create?action=create',
                             //url: 'ajax/store-ajax.php?action=create&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
                             type: 'POST',
                             dataType: 'json',
@@ -182,21 +210,383 @@
                         });
                     });
                 },
-
                 //updateAction: 'ajax/store-ajax.php?action=update',
                 updateAction: function (postData)
                 {
                     var formData = getVars(postData);
 
-                    if($('#storeimg_upload').val() !== "")
-                    {
-                        formData.append("storeimg_update", $('#storeimg_upload').get(0).files[0]);
+                    if($('#packageImg_upload').val() !== ""){
+                        formData.append("packageImg_update", $('#packageImg_upload').get(0).files[0]);
                     }
+					formData.append("_token", '{{ csrf_token() }}');
+                    return $.Deferred(function ($dfd)
+                    {
+                        $.ajax({
+                            url: 'packages/update?action=update',
+							type: 'POST',
+                            dataType: 'json',
+                            data: formData,
+                            processData: false, // Don't process the files
+                            contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+                            success: function (data)
+                            {
+                                $dfd.resolve(data);
+                                $('#table-container').jtable('load');
+                            },
+                            error: function () {
+                                $dfd.reject();
+                            }
+                        });
+                    });
+                },
+                deleteAction: function (postData, jtParams)
+				{
+					console.log("Loading from custom function...");
+					postData = {...postData,...{"_token": "{{ csrf_token() }}"}}
+
+					return $.Deferred(function ($dfd)
+					{
+						$.ajax({
+							//url: 'contact/view?action=list&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
+							url: 'packages/delete?action=delete',
+							type: 'POST',
+							dataType: 'json',
+							data: postData,
+							success: function (data){
+								$dfd.resolve(data);
+							},
+							error: function (){
+								$dfd.reject();
+							}
+						});
+					});
+				},
+            },
+            fields:
+            {
+                id: {
+                    key: true,
+                    list: false,
+                    title: 'id',
+                },
+                title: {
+                    title: '<label for="title">Title</label>',
+                    list: true,
+                    width: '20%',
+					input:function (data){
+
+						if (data.record){
+							var inputData = data.record.title;
+						}else{
+							var inputData = '';
+						}
+						return  '<div class="form-group">' +
+                                    '<input class="form-control" type="text" id="title" name="title" value="' + inputData +'"/>' +
+                                '</div>';
+					},
+                },
+				price: {
+					title: '<label for="price">Price</label>',
+                    width: '10%',
+                    list: true,
+					input:function (data){
+
+						if (data.record){
+							var inputData = data.record.price;
+						}else{
+							var inputData = '';
+						}
+						return  '<div class="form-group">' +
+							        '<input class="form-control" type="text" id="price" name="price" value="' + inputData +'"/>' +
+							    '</div>';
+					},
+				},
+                description:
+                {
+                    list: true,
+                    title: '<label for="descriptionText">Description</label>',
+                    width: '30%',
+                    sorting: false,
+                    input: function (data)
+                    {
+						let inputData;
+						if (data.record)
+                        {
+							inputData = data.record.description;
+                        }
+                        else
+                        {
+							inputData = '';
+                        }
+
+					    return  '<div class="form-group">' +
+                                    '<textarea cols="50" class="form-control" rows="5" id="descriptionText" name="descriptionText" rows="4" wrap="hard">' +  inputData + '</textarea>' +
+                                '</div>';
+                    },
+                    display:function(data)
+                    {
+                        return data.record.description.substring(0,200);
+                    }
+                },
+                image:
+                {
+                    list: true,
+                    title: '<label for="">Package image</label>',
+                    type:'file',
+                    width: '25%',
+                    sorting: false,
+                    display: function(data)
+                    {
+                        return '<img src="/storage/package_images/' + data.record.image +  '" width="150" height="150" class="preview">';
+                    },
+                    input: function (data)
+                    {
+                        //console.log(data.record.store_id);
+						let prevClass;
+						let imgPath;
+						let packageId;
+                        if (data.record)
+                        {
+                            prevClass = data.record.id;
+							imgPath = '/storage/package_images/' + data.record.image;
+                            packageId = data.record.id;//
+                        }
+                        else
+                        {
+                        	prevClass = "0";
+                        	imgPath = "";
+							packageId = 0;//
+                        }
+
+						markup = (  '<div id="preview_' + prevClass + '">'+
+							        '<img src="' + imgPath +  '" width="150" height="150" class="preview" id="packageImg">'+
+                                    '</div>' +
+                                    '<br/>' +
+                                    //'<input class="zzzz" type="file" accept="image/*" name="imgupload" id="packageImg_upload" data-storeid="' + data.record.store_id + '"/ >' +
+                                    '<div class="sazzad-file-upload">' +
+                                        '<div class="file-select">' +
+                                            '<div class="file-select-button" id="fileName">Choose File</div>' +
+                                            '<div class="file-select-name" id="noFile">No file chosen...</div>' +
+                                            '<input type="file" name="imgupload" id="packageImg_upload" accept="image/*" data-storeid="' + packageId + '" />' +
+                                        '</div>' +
+                                    '</div>'
+						);
+						return markup;
+                    }
+                },
+                duration:{
+                	list: true,
+                    title: '<label for="duration">Duration</label>',
+                    sorting: false,
+                    width: '15%',
+					input: function (data)
+					{
+						let inputData;
+						if (data.record)
+						{
+							inputData = data.record.duration;
+						}
+						else
+						{
+							inputData = '';
+						}
+
+						return  '<div class="form-group">' +
+                                    '<input class="form-control" type="text" id="duration" name="duration" value="' + inputData +'"/>' +
+							    '</div>';
+					},
+
+                },
+				highlights1:{
+                	list: false,
+                    title: false,
+                    sorting: false,
+                    input:function (data){
+
+						if (data.record){
+							var inputData = data.record.highlights1;
+							inputData = (inputData)?inputData:'';
+                        }else{
+							var inputData = '';
+                        }
+						return  '<div class="form-group">' +
+                                '<label for="highlights1Text">highlights1</label>' +
+                                    '<input class="form-control" type="text" id="highlights1Text" name="highlights1Text" value="' + inputData +'"/>' +
+                                '</div>';
+                    },
+                },
+				highlights2:{
+					list: false,
+					title: false,
+					sorting: false,
+					input:function (data){
+
+						if (data.record){
+							var inputData = data.record.highlights2;
+							inputData = (inputData)?inputData:'';
+						}else{
+							var inputData = '';
+						}
+						return  '<div class="form-group">' +
+							'<label for="highlights2Text">highlights2</label>' +
+							'<input class="form-control" type="text" id="highlights2Text" name="highlights2Text" value="' + inputData +'"/>' +
+							'</div>';
+					},
+				},
+				highlights3:{
+					list: false,
+					title: false,
+					sorting: false,
+					input:function (data){
+
+						if (data.record){
+							var inputData = data.record.highlights3;
+							inputData = (inputData)?inputData:'';
+						}else{
+							var inputData = '';
+						}
+						return  '<div class="form-group">' +
+							'<label for="highlights3Text">highlights3</label>' +
+							'<input class="form-control" type="text" id="highlights3Text" name="highlights3Text" value="' + inputData +'"/>' +
+							'</div>';
+					},
+				},
+				highlights4:{
+					list: false,
+					title: false,
+					sorting: false,
+					input:function (data){
+
+						if (data.record){
+							var inputData = data.record.highlights4;
+							inputData = (inputData)?inputData:'';
+						}else{
+							var inputData = '';
+						}
+						return  '<div class="form-group">' +
+							'<label for="highlights4Text">highlights4</label>' +
+							'<input class="form-control" type="text" id="highlights4Text" name="highlights4Text" value="' + inputData +'"/>' +
+							'</div>';
+					},
+				},
+				highlights5:{
+					list: false,
+					title: false,
+					sorting: false,
+					input:function (data){
+
+						if (data.record){
+							var inputData = data.record.highlights5;
+							    inputData = (inputData)?inputData:'';
+						}else{
+							var inputData = '';
+						}
+						return  '<div class="form-group">' +
+							'<label for="highlights5Text">highlights5</label>' +
+							'<input class="form-control" type="text" id="highlights5Text" name="highlights5Text" value="' + inputData +'"/>' +
+							'</div>';
+					},
+				},
+           }
+        });
+
+        $('#packagesTableContainer').jtable('load');
+
+
+
+
+
+        ///////////////////////
+
+
+        $('#homeSliderTableContainer').jtable(
+        {
+            title: 'home slider Table',
+            formCreated: function (event, data)
+            {
+                data.form.attr('enctype','multipart/form-data');
+            },
+            formSubmitting: function(event, data)
+            {
+                //filename = $('input[type=file]').val().split('\\').pop();
+                //alert(filename);
+                //alert($("#" + data.form.attr("id")).find('input[name="image"]').val(filename));
+            },
+            paging: true, //Enable paging
+            pageSize: 10, //Set page size (default: 10)
+            sorting: true, //Enable sorting
+            defaultSorting: 'Name ASC', //Set default sorting
+            actions:
+            {
+                //listAction: 'ajax/category-ajax.php?action=list',
+                listAction: function (postData, jtParams)
+                {
+                    console.log("Loading from custom function...");
+                    postData = {...postData,...{"_token": "{{ csrf_token() }}"}};
+                    return $.Deferred(function ($dfd)
+                    {
+                        $.ajax({
+                            //url: 'ajax/stores-ajax.php?action=list&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
+                            url: 'home-slider/view?action=list&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
+                            type: 'POST',
+                            dataType: 'json',
+                            data: postData,
+                            success: function (data)
+                            {
+                                $dfd.resolve(data);
+                            },
+                            error: function ()
+                            {
+                                $dfd.reject();
+                            }
+                        });
+                    });
+                },
+                //createAction: 'ajax/store-ajax.php?action=create',
+                createAction: function (postData)
+                {
+                    var formData = getVars(postData);
+
+                    if($('#homeslider_upload').val() !== ""){
+                        formData.append("homesliderImg", $('#homeslider_upload').get(0).files[0]);
+                    }
+                    formData.append("_token", '{{ csrf_token() }}');
 
                     return $.Deferred(function ($dfd)
                     {
                         $.ajax({
-                            url: 'ajax/stores-ajax.php?action=update',
+                            url: 'home-slider/create?action=create',
+                            //url: 'ajax/store-ajax.php?action=create&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
+                            type: 'POST',
+                            dataType: 'json',
+                            data: formData,
+                            processData: false, // Don't process the files
+                            contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+                            success: function (data)
+                            {
+                                $dfd.resolve(data);
+                                $('#table-container').jtable('load');
+                            },
+                            error: function ()
+                            {
+                                $dfd.reject();
+                            }
+                        });
+                    });
+                },
+                //updateAction: 'ajax/store-ajax.php?action=update',
+                updateAction: function (postData)
+                {
+                    var formData = getVars(postData);
+
+                    if($('#homeslider_upload').val() !== ""){
+                        formData.append("homesliderImg_update", $('#homeslider_upload').get(0).files[0]);
+                    }
+                    formData.append("_token", '{{ csrf_token() }}');
+                    return $.Deferred(function ($dfd)
+                    {
+                        $.ajax({
+                            url: 'home-slider/update?action=update',
                             type: 'POST',
                             dataType: 'json',
                             data: formData,
@@ -213,1452 +603,265 @@
                         });
                     });
                 },
-                deleteAction: 'ajax/stores-ajax.php?action=delete'
+                deleteAction: function (postData, jtParams)
+                {
+                    console.log("Loading from custom function...");
+                    postData = {...postData,...{"_token": "{{ csrf_token() }}"}}
+
+                    return $.Deferred(function ($dfd)
+                    {
+                        $.ajax({
+                            //url: 'contact/view?action=list&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
+                            url: 'home-slider/delete?action=delete',
+                            type: 'POST',
+                            dataType: 'json',
+                            data: postData,
+                            success: function (data){
+                                $dfd.resolve(data);
+                            },
+                            error: function (){
+                                $dfd.reject();
+                            }
+                        });
+                    });
+                },
             },
             fields:
             {
-                store_id: {
+                id: {
                     key: true,
                     list: false,
                     title: 'id',
-                },
-                name: {
-                    title: 'Store Name',
-                },
-                description:
-                {
-                    list: true,
-                    title: 'Store Description',width: '50%',sorting: false,
-                    input: function (data)
-                    {
-                        if (data.record)
-                        {
-                            return '<textarea cols="50" id="descriptionText" name="descriptionText" rows="4" wrap="hard">' + data.record.description+ '</textarea>';
-                        }
-                        else
-                        {
-                            return '<textarea cols="50" id="descriptionText" name="descriptionText" rows="4" wrap="hard" />';
-                        }
-                    },
-                    display:function(data)
-                    {
-                        return data.record.description.substring(0,200);
-                    }
-                },
+                },                
                 image:
                 {
                     list: true,
-                    title: 'Store Logo',
-                    type:'file',sorting: false,
+                    title: '<label for="">Home Slider image</label><br>',
+                    type:'file',
+                    width: '25%',
+                    sorting: false,
                     display: function(data)
                     {
-                        return '<img src="' + data.record.image +  '" width="150" height="150" class="preview">';
+                        return '<img src="/storage/' + data.record.image +  '" width="150" height="150" class="preview">';
                     },
                     input: function (data)
                     {
                         //console.log(data.record.store_id);
+                        let prevClass;
+                        let imgPath;
+                        let sliderImgId;
                         if (data.record)
                         {
-                            markup = (      '<div id="preview_' + data.record.store_id + '">'+
-                                                '<img src="' + data.record.image +  '" width="150" height="150" class="preview" id="storeimg">'+
-                                            '</div>' +
-                                            '<br/><br/><input type="file" accept="image/*" name="imgupload" id="storeimg_upload" data-storeid="' + data.record.store_id + '"/ >');
-                            return markup;
+                            prevClass = data.record.id;
+                            imgPath = '/storage/' + data.record.image;
+                            sliderImgId = data.record.id;//
                         }
                         else
                         {
-                            markup = (      '<div id="preview_0">'+
-                                                '<img src="" width="150" height="150" class="preview" id="storeimg">'+
-                                            '</div>' +
-                                            '<br/><br/><input type="file" accept="image/*" id="storeimg_upload" data-storeid="0" name="imgupload"/ >');
-                            return markup;
+                            prevClass = "0";
+                            imgPath = "";
+                            sliderImgId = 0;//
                         }
+
+                        markup = (  '<div id="preview_' + prevClass + '">'+
+                                        '<img src="' + imgPath +  '" width="150" height="150" class="preview" id="sliderimg">'+
+                                    '</div>' +
+                                    '<br/>' +
+                                    //'<input class="zzzz" type="file" accept="image/*" name="imgupload" id="packageImg_upload" data-storeid="' + data.record.store_id + '"/ >' +
+                                    '<div class="sazzad-file-upload">' +
+                                        '<div class="file-select">' +
+                                            '<div class="file-select-button" id="fileName">Choose File</div>' +
+                                            '<div class="file-select-name" id="noFile">No file chosen...</div>' +
+                                            '<input type="file" name="imgupload" id="homeslider_upload" accept="image/*" data-imgid="' + sliderImgId + '" />' +
+                                        '</div>' +
+                                    '</div>'
+                        );
+                        return markup;
                     }
-
-
                 },
-                open:{list: true,title: 'Open', sorting: false},
-                close:{list: true,title: 'Close',sorting: false},
+                enable:{
+                    list: true,
+                    title: '<label for="status">Enable/Disable</label>',
+                    sorting: false,
+                    width: '15%',
+                    display: function(data)
+                    {
+                        var stat;
+                        if (data.record.enable)
+                        {
+                            stat = "Enable";
+                        }
+                        else
+                        {
+                            stat = 'Disable';
+                        }
 
+                        return stat;
+
+                    },
+                    input: function (data)
+                    {
+                        let inputData;
+                        if (data.record)
+                        {
+                            inputData = data.record.enable;
+                        }
+                        else
+                        {
+                            inputData = '1';
+                        }
+
+                        isEnable =  (inputData)?'checked':'';
+                        isDisable = (inputData)?'':'checked';
+
+                        return  '<div class="form-group">' +
+                                    '<fieldset id="image-status">' +
+                                        '<label class="radio-inline"><input type="radio" value="enable" name="image_status" id="image-status-enable" '+ isEnable +'>Enable</label>' +
+                                        '<label class="radio-inline"><input type="radio" value="disable" name="image_status" id="image-status-disable" '+ isDisable +'>Disable</label>' +
+                                    '</fieldset>' +
+                                '</div>';                        
+
+                    },
+
+                },                
            }
         });
 
-
-        $('#storeTableContainer').jtable('load');
-
-
-    $(document).on('change','#storeimg_upload', function()
-    {
-        console.log(this);
-        console.log($(this));
-        var id=this.id;
-        var storeid = $(this).data('storeid');
-
-
-        //alert(storeid);
-        readURL(this,storeid);
-
-
-    });
+        $('#homeSliderTableContainer').jtable('load');
 
 
 
-    function readURL(input,storeid)
-    {
 
-        if (input.files && input.files[0])
-        {
-            var reader = new FileReader();
 
-            reader.onload = function (e)
+
+
+
+
+
+
+
+
+        $(document).on('change','#packageImg_upload', function(){
+            console.log(this);
+            console.log($(this));
+            var id=this.id;
+            var storeid = $(this).data('storeid');
+
+            //alert(storeid);
+            readURL(this,storeid);
+        });
+
+        $(document).on('change','#homeslider_upload', function(){
+            console.log(this);
+            console.log($(this));
+            var id=this.id;
+            var imgid = $(this).data('imgid');
+
+            //alert(storeid);
+            readURL(this,imgid);
+        });
+
+        function readURL(input,storeid){
+            if (input.files && input.files[0])
             {
-                $('#preview_' + storeid  + '> img').attr('src', e.target.result);
-            };
+                var reader = new FileReader();
 
-            reader.readAsDataURL(input.files[0]);
+                reader.onload = function (e)
+                {
+                    $('#preview_' + storeid  + '> img').attr('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
         }
-    }
 
 
-    // Read a page's GET URL variables and return them as an associative array.
-    function getVars(url)
-    {
-        var formData = new FormData();
-        var split;
-        $.each(url.split("&"), function(key, value)
-        {
-            split = value.split("=");
-            formData.append(split[0], decodeURIComponent(split[1].replace(/\+/g, " ")));
-        });
-
-        return formData;
-    }
-
-
-    /*
-    if (typeof categoryArrayobj === "undefined")
-    {
-        categoryArrayobj ={};
-    }
-    if (typeof storeArrayobj === "undefined")
-    {
-        storeArrayobj ={};
-    }
-
-    $(document).ready(function ()
-    {
-
-        $('#deliveryGridTableContainer').jtable(
-        {
-            title: 'Delivery Grid Table',
-            paging: true, //Enable paging
-            pageSize: 10, //Set page size (default: 10)
-            sorting: true, //Enable sorting
-            defaultSorting: 'Name ASC', //Set default sorting
-            actions:
+        // Read a page's GET URL variables and return them as an associative array.
+        function getVars(url){
+            var formData = new FormData();
+            var split;
+            $.each(url.split("&"), function(key, value)
             {
-                listAction: function (postData, jtParams)
-                {
-                    console.log("Loading from custom function...");
-                    return $.Deferred(function ($dfd)
-                    {
-                        $.ajax({
-                            url: 'ajax/datagrid-ajax.php?action=list&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
-                            type: 'POST',
-                            dataType: 'json',
-                            data: postData,
-                            success: function (data)
-                            {
-                                $dfd.resolve(data);
-                            },
-                            error: function ()
-                            {
-                                $dfd.reject();
-                            }
-                        });
-                    });
-                },
-                createAction: 'ajax/datagrid-ajax.php?action=create',
-                updateAction: 'ajax/datagrid-ajax.php?action=update',
-                deleteAction: 'ajax/datagrid-ajax.php?action=delete'
-            },
-            fields: {
-                deliverygrid_id: {
-                    key: true,
-                    list: false,
-                    title: 'id',
-                },
-                area: {
-                    title: 'Express Grid',
-                    width: '40%'
-                },
-                price: {
-                    title: 'Pickup & Delivery Fee (Rs)',
-                    width: '20%'
-                }
-            }
+                split = value.split("=");
+                formData.append(split[0], decodeURIComponent(split[1].replace(/\+/g, " ")));
+            });
+            return formData;
+        }
 
+
+
+        function UrlParamsToObj(url){
+            //var search = location.search.substring(1);
+            var search = url;
+            return JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g,'":"') + '"}', function(key, value)
+            {
+                return key===""?value:decodeURIComponent(value)
+            });
+        }
+
+
+        /*
+        if (typeof categoryArrayobj === "undefined")
+        {
+            categoryArrayobj ={};
+        }
+        if (typeof storeArrayobj === "undefined")
+        {
+            storeArrayobj ={};
+        }
+
+
+        $(document).on('change','#event_img_upload', function()
+        {
+            console.log(this);
+            console.log($(this));
+            var id=this.id;
+            var eventid = $(this).data('eventid');
+            //alert(storeid);
+            readURL(this,eventid);
         });
 
 
-        $('#deliveryGridTableContainer').jtable('load');
-
-        $('#categoryTableContainer').jtable(
+        $(document).on('change','#smokers_img_upload', function()
         {
-            title: 'Product Category Table',
-            paging: true, //Enable paging
-            pageSize: 10, //Set page size (default: 10)
-            sorting: true, //Enable sorting
-            defaultSorting: 'Name ASC', //Set default sorting
-            actions:
-            {
-                listAction: function (postData, jtParams)
-                {
-                    console.log("Loading from custom function...");
-                    return $.Deferred(function ($dfd)
-                    {
-                        $.ajax(
-                        {
-                            url: 'ajax/category-ajax.php?action=list&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
-                            type: 'POST',
-                            dataType: 'json',
-                            data: postData,
-                            success: function (data)
-                            {
-                                $dfd.resolve(data);
-                            },
-                            error: function ()
-                            {
-                                $dfd.reject();
-                            }
-                        });
-                    });
-                },
-                createAction: 'ajax/category-ajax.php?action=create',
-                updateAction: 'ajax/category-ajax.php?action=update',
-                deleteAction: 'ajax/category-ajax.php?action=delete'
-            },
-            fields: {
-                category_id: {
-                    key: true,
-                    list: false,
-                    title: 'id',
-                },
-                category: {
-                    title: 'Product Categories',
-                    width: '40%'
-                }
-            }
-
+            console.log(this);
+            console.log($(this));
+            var id=this.id;
+            var smokeid = $(this).data('smokeid');
+            //alert(storeid);
+            readURL(this,smokeid);
         });
 
-        $('#categoryTableContainer').jtable('load');
-
-
-
-        $('#storeTableContainer').jtable(
+        $(document).on('change','#funAccessories_img_upload', function()
         {
-            title: 'Stores Table',
-
-
-            formCreated: function (event, data)
-            {
-                data.form.attr('enctype','multipart/form-data');
-
-            },
-            formSubmitting: function(event, data)
-            {
-                //filename = $('input[type=file]').val().split('\\').pop();
-                //alert(filename);
-                //alert($("#" + data.form.attr("id")).find('input[name="image"]').val(filename));
-
-            },
-            paging: true, //Enable paging
-            pageSize: 10, //Set page size (default: 10)
-            sorting: true, //Enable sorting
-            defaultSorting: 'Name ASC', //Set default sorting
-            actions:
-            {
-                //listAction: 'ajax/category-ajax.php?action=list',
-                listAction: function (postData, jtParams)
-                {
-                    console.log("Loading from custom function...");
-                    return $.Deferred(function ($dfd)
-                    {
-                        $.ajax({
-                            url: 'ajax/stores-ajax.php?action=list&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
-                            type: 'POST',
-                            dataType: 'json',
-                            data: postData,
-                            success: function (data)
-                            {
-                                $dfd.resolve(data);
-                            },
-                            error: function ()
-                            {
-                                $dfd.reject();
-                            }
-                        });
-                    });
-                },
-
-                //createAction: 'ajax/store-ajax.php?action=create',
-                createAction: function (postData)
-                {
-                    var formData = getVars(postData);
-
-                    if($('#storeimg_upload').val() !== "")
-                    {
-                        formData.append("storeimg", $('#storeimg_upload').get(0).files[0]);
-                    }
-
-                    return $.Deferred(function ($dfd)
-                    {
-                        $.ajax({
-                            url: 'ajax/stores-ajax.php?action=create',
-                            //url: 'ajax/store-ajax.php?action=create&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
-                            type: 'POST',
-                            dataType: 'json',
-                            data: formData,
-                            processData: false, // Don't process the files
-                            contentType: false, // Set content type to false as jQuery will tell the server its a query string request
-                            success: function (data)
-                            {
-                                $dfd.resolve(data);
-                                $('#table-container').jtable('load');
-                            },
-                            error: function ()
-                            {
-                                $dfd.reject();
-                            }
-                        });
-                    });
-                },
-
-                //updateAction: 'ajax/store-ajax.php?action=update',
-                updateAction: function (postData)
-                {
-                    var formData = getVars(postData);
-
-                    if($('#storeimg_upload').val() !== "")
-                    {
-                        formData.append("storeimg_update", $('#storeimg_upload').get(0).files[0]);
-                    }
-
-                    return $.Deferred(function ($dfd)
-                    {
-                        $.ajax({
-                            url: 'ajax/stores-ajax.php?action=update',
-                            type: 'POST',
-                            dataType: 'json',
-                            data: formData,
-                            processData: false, // Don't process the files
-                            contentType: false, // Set content type to false as jQuery will tell the server its a query string request
-                            success: function (data)
-                            {
-                                $dfd.resolve(data);
-                                $('#table-container').jtable('load');
-                            },
-                            error: function () {
-                                $dfd.reject();
-                            }
-                        });
-                    });
-                },
-                deleteAction: 'ajax/stores-ajax.php?action=delete'
-            },
-            fields:
-            {
-                store_id: {
-                    key: true,
-                    list: false,
-                    title: 'id',
-                },
-                name: {
-                    title: 'Store Name',
-                },
-                description:
-                {
-                    list: true,
-                    title: 'Store Description',width: '50%',sorting: false,
-                    input: function (data)
-                    {
-                        if (data.record)
-                        {
-                            return '<textarea cols="50" id="descriptionText" name="descriptionText" rows="4" wrap="hard">' + data.record.description+ '</textarea>';
-                        }
-                        else
-                        {
-                            return '<textarea cols="50" id="descriptionText" name="descriptionText" rows="4" wrap="hard" />';
-                        }
-                    },
-                    display:function(data)
-                    {
-                        return data.record.description.substring(0,200);
-                    }
-                },
-                image:
-                {
-                    list: true,
-                    title: 'Store Logo',
-                    type:'file',sorting: false,
-                    display: function(data)
-                    {
-                        return '<img src="' + data.record.image +  '" width="150" height="150" class="preview">';
-                    },
-                    input: function (data)
-                    {
-                        //console.log(data.record.store_id);
-                        if (data.record)
-                        {
-                            markup = (      '<div id="preview_' + data.record.store_id + '">'+
-                                                '<img src="' + data.record.image +  '" width="150" height="150" class="preview" id="storeimg">'+
-                                            '</div>' +
-                                            '<br/><br/><input type="file" accept="image/*" name="imgupload" id="storeimg_upload" data-storeid="' + data.record.store_id + '"/ >');
-                            return markup;
-                        }
-                        else
-                        {
-                            markup = (      '<div id="preview_0">'+
-                                                '<img src="" width="150" height="150" class="preview" id="storeimg">'+
-                                            '</div>' +
-                                            '<br/><br/><input type="file" accept="image/*" id="storeimg_upload" data-storeid="0" name="imgupload"/ >');
-                            return markup;
-                        }
-                    }
-
-
-                },
-                open:{list: true,title: 'Open', sorting: false},
-                close:{list: true,title: 'Close',sorting: false},
-
-           }
+            console.log(this);
+            console.log($(this));
+            var id=this.id;
+            var faid = $(this).data('funaccessoriesid');
+            //alert(storeid);
+            readURL(this,faid);
         });
 
-
-        $('#storeTableContainer').jtable('load');
-
-
-
-
-
-        $('#productTableContainer').jtable(
+        $(document).on('change','#grocery_img_upload', function()
         {
-            title: 'Product Table',
-
-
-            formCreated: function (event, data)
-            {
-                data.form.attr('enctype','multipart/form-data');
-
-            },
-            formSubmitting: function(event, data)
-            {
-                //filename = $('input[type=file]').val().split('\\').pop();
-                //alert(filename);
-                //alert($("#" + data.form.attr("id")).find('input[name="image"]').val(filename));
-
-            },
-            paging: true, //Enable paging
-            pageSize: 10, //Set page size (default: 10)
-            sorting: true, //Enable sorting
-            defaultSorting: 'Name ASC', //Set default sorting
-            actions:
-            {
-                //listAction: 'ajax/category-ajax.php?action=list',
-                listAction: function (postData, jtParams)
-                {
-                    console.log("Loading from custom function...");
-                    return $.Deferred(function ($dfd)
-                    {
-                        $.ajax({
-                            url: 'ajax/products-ajax.php?action=list&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
-                            type: 'POST',
-                            dataType: 'json',
-                            data: postData,
-                            success: function (data)
-                            {
-                                $dfd.resolve(data);
-                            },
-                            error: function ()
-                            {
-                                $dfd.reject();
-                            }
-                        });
-                    });
-                },
-
-                //createAction: 'ajax/store-ajax.php?action=create',
-                createAction: function (postData)
-                {
-                    var formData = getVars(postData);
-
-                    if($('#productimg_upload').val() !== "")
-                    {
-                        formData.append("productimg", $('#productimg_upload').get(0).files[0]);
-                    }
-
-                    return $.Deferred(function ($dfd)
-                    {
-                        $.ajax({
-                            url: 'ajax/products-ajax.php?action=create',
-                            //url: 'ajax/store-ajax.php?action=create&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
-                            type: 'POST',
-                            dataType: 'json',
-                            data: formData,
-                            processData: false, // Don't process the files
-                            contentType: false, // Set content type to false as jQuery will tell the server its a query string request
-                            success: function (data)
-                            {
-                                $dfd.resolve(data);
-                                $('#table-container').jtable('load');
-                            },
-                            error: function ()
-                            {
-                                $dfd.reject();
-                            }
-                        });
-                    });
-                },
-
-                //updateAction: 'ajax/store-ajax.php?action=update',
-                updateAction: function (postData)
-                {
-                    var formData = getVars(postData);
-
-                    if($('#productimg_upload').val() !== "")
-                    {
-                        formData.append("productimg", $('#productimg_upload').get(0).files[0]);
-                    }
-
-                    return $.Deferred(function ($dfd)
-                    {
-                        $.ajax({
-                            url: 'ajax/products-ajax.php?action=update',
-                            type: 'POST',
-                            dataType: 'json',
-                            data: formData,
-                            processData: false, // Don't process the files
-                            contentType: false, // Set content type to false as jQuery will tell the server its a query string request
-                            success: function (data)
-                            {
-                                $dfd.resolve(data);
-                                $('#table-container').jtable('load');
-                            },
-                            error: function () {
-                                $dfd.reject();
-                            }
-                        });
-                    });
-                },
-                deleteAction: 'ajax/products-ajax.php?action=delete'
-            },
-            fields:
-            {
-                product_id: {
-                    key: true,
-                    list: false,
-                    title: 'id',
-                },
-                name: {
-                    title: 'Product Name',
-                },
-                description:
-                {
-                    list: true,
-                    title: 'Product Description',width: '50%',sorting: false,
-                    input: function (data)
-                    {
-                        if (data.record)
-                        {
-                            return '<textarea cols="50" id="productDescriptionText" name="productDescriptionText" rows="4" wrap="hard">' + data.record.description+ '</textarea>';
-                        }
-                        else
-                        {
-                            return '<textarea cols="50" id="productDescriptionText" name="productDescriptionText" rows="4" wrap="hard" />';
-                        }
-                    },
-                    display:function(data)
-                    {
-                        return data.record.description.substring(0,200);
-                    }
-                },
-                price:{list: true,title: 'Price (Rs)',},
-                image:
-                {
-                    list: true,
-                    title: 'Product Image',
-                    type:'file',sorting: false,
-                    display: function(data)
-                    {
-                        return '<img src="' + data.record.image +  '" width="150" height="150" class="preview">';
-                    },
-                    input: function (data)
-                    {
-                        //console.log(data.record.store_id);
-                        if (data.record)
-                        {
-                            markup = (      '<div id="preview_' + data.record.store_id + '">'+
-                            '<img src="' + data.record.image +  '" width="150" height="150" class="preview" id="productimg">'+
-                            '</div>' +
-                            '<br/><br/><input type="file" accept="image/*" name="product_imgupload" id="productimg_upload" data-productid="' + data.record.store_id + '"/ >');
-                            return markup;
-                        }
-                        else
-                        {
-                            markup = (      '<div id="preview_0">'+
-                            '<img src="" width="150" height="150" class="preview" id="productimg">'+
-                            '</div>' +
-                            '<br/><br/><input type="file" accept="image/*" id="productimg_upload" data-productid="0" name="product_imgupload"/ >');
-                            return markup;
-                        }
-                    }
-
-
-                },
-                storeid:
-                {
-                    list: true,
-                    title: 'Store Name',
-                    options: storeArrayobj
-                },
-                categoryid:
-                {
-                    list: true,
-                    title: 'Category',
-                    options: categoryArrayobj
-                },
-            }
+            console.log(this);
+            console.log($(this));
+            var id=this.id;
+            var groceryid = $(this).data('groceryid');
+            //alert(storeid);
+            readURL(this,groceryid);
         });
 
-
-        $('#LoadRecordsButton').click(function (e)
+        $(document).on('change','#productimg_upload', function()
         {
-            e.preventDefault();
-            $('#productTableContainer').jtable('load',
-                {
-                    //name: $('#storename').val(),
-                    storeid: $('#storeId').val()
-                });
+            console.log(this);
+            console.log($(this));
+            var id=this.id;
+            var productid = $(this).data('productid');
+            //alert(productid);
+            readURL(this,productid);
         });
-
-
-
-        $('#productTableContainer').jtable('load');
-
-
-
-
-
-
-
-        $('#smokersTableContainer').jtable(
-        {
-            title: 'Smokers Page Table',
-
-
-            formCreated: function (event, data)
-            {
-                data.form.attr('enctype','multipart/form-data');
-
-            },
-            formSubmitting: function(event, data)
-            {
-                //filename = $('input[type=file]').val().split('\\').pop();
-                //alert(filename);
-                //alert($("#" + data.form.attr("id")).find('input[name="image"]').val(filename));
-
-            },
-            paging: true, //Enable paging
-            pageSize: 10, //Set page size (default: 10)
-            sorting: true, //Enable sorting
-            defaultSorting: 'Name ASC', //Set default sorting
-            actions:
-            {
-                //listAction: 'ajax/category-ajax.php?action=list',
-                listAction: function (postData, jtParams)
-                {
-                    console.log("Loading from custom function...");
-                    return $.Deferred(function ($dfd)
-                    {
-                        $.ajax({
-                            url: 'ajax/smokers-ajax.php?action=list&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
-                            type: 'POST',
-                            dataType: 'json',
-                            data: postData,
-                            success: function (data)
-                            {
-                                $dfd.resolve(data);
-                            },
-                            error: function ()
-                            {
-                                $dfd.reject();
-                            }
-                        });
-                    });
-                },
-
-                //createAction: 'ajax/store-ajax.php?action=create',
-                createAction: function (postData)
-                {
-                    var formData = getVars(postData);
-
-                    if($('#smokers_img_upload').val() !== "")
-                    {
-                        formData.append("smokersimg", $('#smokers_img_upload').get(0).files[0]);
-                    }
-
-                    return $.Deferred(function ($dfd)
-                    {
-                        $.ajax({
-                            url: 'ajax/smokers-ajax.php?action=create',
-                            //url: 'ajax/store-ajax.php?action=create&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
-                            type: 'POST',
-                            dataType: 'json',
-                            data: formData,
-                            processData: false, // Don't process the files
-                            contentType: false, // Set content type to false as jQuery will tell the server its a query string request
-                            success: function (data)
-                            {
-                                $dfd.resolve(data);
-                                $('#table-container').jtable('load');
-                            },
-                            error: function ()
-                            {
-                                $dfd.reject();
-                            }
-                        });
-                    });
-                },
-
-                //updateAction: 'ajax/store-ajax.php?action=update',
-                updateAction: function (postData)
-                {
-                    var formData = getVars(postData);
-
-                    if($('#smokers_img_upload').val() !== "")
-                    {
-                        formData.append("smokersimg", $('#smokers_img_upload').get(0).files[0]);
-                    }
-
-                    return $.Deferred(function ($dfd)
-                    {
-                        $.ajax({
-                            url: 'ajax/smokers-ajax.php?action=update',
-                            type: 'POST',
-                            dataType: 'json',
-                            data: formData,
-                            processData: false, // Don't process the files
-                            contentType: false, // Set content type to false as jQuery will tell the server its a query string request
-                            success: function (data)
-                            {
-                                $dfd.resolve(data);
-                                $('#table-container').jtable('load');
-                            },
-                            error: function () {
-                                $dfd.reject();
-                            }
-                        });
-                    });
-                },
-                deleteAction: 'ajax/smokers-ajax.php?action=delete'
-            },
-            fields:
-            {
-                id: {
-                    key: true,
-                    list: false,
-                    title: 'id',
-                },
-                name: {
-                    title: 'Item Name',
-                },
-                description:
-                {
-                    list: true,
-                    title: 'Smokers Item Description',width: '50%',sorting: false,
-                    input: function (data)
-                    {
-                        if (data.record)
-                        {
-                            return '<textarea cols="50" id="smokersDescriptionText" name="smokersDescriptionText" rows="4" wrap="hard">' + data.record.description+ '</textarea>';
-                        }
-                        else
-                        {
-                            return '<textarea cols="50" id="smokersDescriptionText" name="smokersDescriptionText" rows="4" wrap="hard" />';
-                        }
-                    },
-                    display:function(data)
-                    {
-                        return data.record.description.substring(0,200);
-                    }
-                },
-                image:
-                {
-                    list: true,
-                    title: 'Smokers Item Image',
-                    type:'file',sorting: false,
-                    display: function(data)
-                    {
-                        return '<img src="' + data.record.image +  '" width="150" height="150" class="preview">';
-                    },
-                    input: function (data)
-                    {
-                        //console.log(data.record.store_id);
-                        if (data.record)
-                        {
-                            markup = (      '<div id="preview_' + data.record.store_id + '">'+
-                            '<img src="' + data.record.image +  '" width="150" height="150" class="preview" id="productimg">'+
-                            '</div>' +
-                            '<br/><br/><input type="file" accept="image/*" name="smokers_imgupload" id="smokers_img_upload" data-smokeid="' + data.record.store_id + '"/ >');
-                            return markup;
-                        }
-                        else
-                        {
-                            markup = (      '<div id="preview_0">'+
-                            '<img src="" width="150" height="150" class="preview" id="productimg">'+
-                            '</div>' +
-                            '<br/><br/><input type="file" accept="image/*" id="smokers_img_upload" data-smokeid="0" name="smokers_imgupload"/ >');
-                            return markup;
-                        }
-                    }
-
-
-                },
-                price:{list: true,title: 'Price (Rs)',},
-            }
-        });
-
-        $('#smokersTableContainer').jtable('load');
-
-
-        //grocery
-        $('#groceryTableContainer').jtable(
-        {
-            title: 'Grocery Page Table',
-
-
-            formCreated: function (event, data)
-            {
-                data.form.attr('enctype','multipart/form-data');
-
-            },
-            formSubmitting: function(event, data)
-            {
-                //filename = $('input[type=file]').val().split('\\').pop();
-                //alert(filename);
-                //alert($("#" + data.form.attr("id")).find('input[name="image"]').val(filename));
-
-            },
-            paging: true, //Enable paging
-            pageSize: 10, //Set page size (default: 10)
-            sorting: true, //Enable sorting
-            defaultSorting: 'Name ASC', //Set default sorting
-            actions:
-            {
-                //listAction: 'ajax/category-ajax.php?action=list',
-                listAction: function (postData, jtParams)
-                {
-                    console.log("Loading from custom function...");
-                    return $.Deferred(function ($dfd)
-                    {
-                        $.ajax({
-                            url: 'ajax/grocery-ajax.php?action=list&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
-                            type: 'POST',
-                            dataType: 'json',
-                            data: postData,
-                            success: function (data)
-                            {
-                                $dfd.resolve(data);
-                            },
-                            error: function ()
-                            {
-                                $dfd.reject();
-                            }
-                        });
-                    });
-                },
-
-                //createAction: 'ajax/store-ajax.php?action=create',
-                createAction: function (postData)
-                {
-                    var formData = getVars(postData);
-
-                    if($('#grocery_img_upload').val() !== "")
-                    {
-                        formData.append("groceryimg", $('#grocery_img_upload').get(0).files[0]);
-                    }
-
-                    return $.Deferred(function ($dfd)
-                    {
-                        $.ajax({
-                            url: 'ajax/grocery-ajax.php?action=create',
-                            //url: 'ajax/store-ajax.php?action=create&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
-                            type: 'POST',
-                            dataType: 'json',
-                            data: formData,
-                            processData: false, // Don't process the files
-                            contentType: false, // Set content type to false as jQuery will tell the server its a query string request
-                            success: function (data)
-                            {
-                                $dfd.resolve(data);
-                                $('#table-container').jtable('load');
-                            },
-                            error: function ()
-                            {
-                                $dfd.reject();
-                            }
-                        });
-                    });
-                },
-
-                //updateAction: 'ajax/store-ajax.php?action=update',
-                updateAction: function (postData)
-                {
-                    var formData = getVars(postData);
-
-                    if($('#grocery_img_upload').val() !== "")
-                    {
-                        formData.append("groceryimg", $('#grocery_img_upload').get(0).files[0]);
-                    }
-
-                    return $.Deferred(function ($dfd)
-                    {
-                        $.ajax({
-                            url: 'ajax/grocery-ajax.php?action=update',
-                            type: 'POST',
-                            dataType: 'json',
-                            data: formData,
-                            processData: false, // Don't process the files
-                            contentType: false, // Set content type to false as jQuery will tell the server its a query string request
-                            success: function (data)
-                            {
-                                $dfd.resolve(data);
-                                $('#table-container').jtable('load');
-                            },
-                            error: function () {
-                                $dfd.reject();
-                            }
-                        });
-                    });
-                },
-                deleteAction: 'ajax/grocery-ajax.php?action=delete'
-            },
-            fields:
-            {
-                id: {
-                    key: true,
-                    list: false,
-                    title: 'id',
-                },
-                name: {
-                    title: 'Item Name',
-                },
-                description:
-                {
-                    list: true,
-                    title: 'Description',width: '50%',sorting: false,
-                    input: function (data)
-                    {
-                        if (data.record)
-                        {
-                            return '<textarea cols="50" id="groceryDescriptionText" name="groceryDescriptionText" rows="4" wrap="hard">' + data.record.description+ '</textarea>';
-                        }
-                        else
-                        {
-                            return '<textarea cols="50" id="groceryDescriptionText" name="groceryDescriptionText" rows="4" wrap="hard" />';
-                        }
-                    },
-                    display:function(data)
-                    {
-                        return data.record.description.substring(0,200);
-                    }
-                },
-                image:
-                {
-                    list: true,
-                    title: 'Item Image',
-                    type:'file',sorting: false,
-                    display: function(data)
-                    {
-                        return '<img src="' + data.record.image +  '" width="150" height="150" class="preview">';
-                    },
-                    input: function (data)
-                    {
-                        //console.log(data.record.store_id);
-                        if (data.record)
-                        {
-                            markup = (      '<div id="preview_' + data.record.store_id + '">'+
-                            '<img src="' + data.record.image +  '" width="150" height="150" class="preview" id="groceryimg">'+
-                            '</div>' +
-                            '<br/><br/><input type="file" accept="image/*" name="grocery_imgupload" id="grocery_img_upload" data-groceryid="' + data.record.store_id + '"/ >');
-                            return markup;
-                        }
-                        else
-                        {
-                            markup = (      '<div id="preview_0">'+
-                            '<img src="" width="150" height="150" class="preview" id="groceryimg">'+
-                            '</div>' +
-                            '<br/><br/><input type="file" accept="image/*" id="grocery_img_upload" data-groceryid="0" name="grocery_imgupload"/ >');
-                            return markup;
-                        }
-                    }
-
-
-                },
-                price:{list: true,title: 'Price (Rs)',},
-            }
-        });
-
-        $('#groceryTableContainer').jtable('load');
-
-
-
-        //fun accessories
-        $('#funAccessoriesTableContainer').jtable(
-        {
-            title: 'Fun Accessories Page Table',
-
-
-            formCreated: function (event, data)
-            {
-                data.form.attr('enctype','multipart/form-data');
-
-            },
-            formSubmitting: function(event, data)
-            {
-                //filename = $('input[type=file]').val().split('\\').pop();
-                //alert(filename);
-                //alert($("#" + data.form.attr("id")).find('input[name="image"]').val(filename));
-
-            },
-            paging: true, //Enable paging
-            pageSize: 10, //Set page size (default: 10)
-            sorting: true, //Enable sorting
-            defaultSorting: 'Name ASC', //Set default sorting
-            actions:
-            {
-                //listAction: 'ajax/category-ajax.php?action=list',
-                listAction: function (postData, jtParams)
-                {
-                    console.log("Loading from custom function...");
-                    return $.Deferred(function ($dfd)
-                    {
-                        $.ajax({
-                            url: 'ajax/fun-accessories-ajax.php?action=list&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
-                            type: 'POST',
-                            dataType: 'json',
-                            data: postData,
-                            success: function (data)
-                            {
-                                $dfd.resolve(data);
-                            },
-                            error: function ()
-                            {
-                                $dfd.reject();
-                            }
-                        });
-                    });
-                },
-
-                //createAction: 'ajax/store-ajax.php?action=create',
-                createAction: function (postData)
-                {
-                    var formData = getVars(postData);
-
-                    if($('#funAccessories_img_upload').val() !== "")
-                    {
-                        formData.append("FAimg", $('#funAccessories_img_upload').get(0).files[0]);
-                    }
-
-                    return $.Deferred(function ($dfd)
-                    {
-                        $.ajax({
-                            url: 'ajax/fun-accessories-ajax.php?action=create',
-                            //url: 'ajax/store-ajax.php?action=create&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
-                            type: 'POST',
-                            dataType: 'json',
-                            data: formData,
-                            processData: false, // Don't process the files
-                            contentType: false, // Set content type to false as jQuery will tell the server its a query string request
-                            success: function (data)
-                            {
-                                $dfd.resolve(data);
-                                $('#table-container').jtable('load');
-                            },
-                            error: function ()
-                            {
-                                $dfd.reject();
-                            }
-                        });
-                    });
-                },
-
-                //updateAction: 'ajax/store-ajax.php?action=update',
-                updateAction: function (postData)
-                {
-                    var formData = getVars(postData);
-
-                    if($('#funAccessories_img_upload').val() !== "")
-                    {
-                        formData.append("FAimg", $('#funAccessories_img_upload').get(0).files[0]);
-                    }
-
-                    return $.Deferred(function ($dfd)
-                    {
-                        $.ajax({
-                            url: 'ajax/fun-accessories-ajax.php?action=update',
-                            type: 'POST',
-                            dataType: 'json',
-                            data: formData,
-                            processData: false, // Don't process the files
-                            contentType: false, // Set content type to false as jQuery will tell the server its a query string request
-                            success: function (data)
-                            {
-                                $dfd.resolve(data);
-                                $('#table-container').jtable('load');
-                            },
-                            error: function () {
-                                $dfd.reject();
-                            }
-                        });
-                    });
-                },
-                deleteAction: 'ajax/fun-accessories-ajax.php?action=delete'
-            },
-            fields:
-            {
-                id: {
-                    key: true,
-                    list: false,
-                    title: 'id',
-                },
-                name: {
-                    title: 'Item Name',
-                },
-                description:
-                {
-                    list: true,
-                    title: 'Description',width: '50%',sorting: false,
-                    input: function (data)
-                    {
-                        if (data.record)
-                        {
-                            return '<textarea cols="50" id="funAccessoriesDescriptionText" name="funAccessoriesDescriptionText" rows="4" wrap="hard">' + data.record.description+ '</textarea>';
-                        }
-                        else
-                        {
-                            return '<textarea cols="50" id="funAccessoriesDescriptionText" name="funAccessoriesDescriptionText" rows="4" wrap="hard" />';
-                        }
-                    },
-                    display:function(data)
-                    {
-                        console.log(data);
-                        return data.record.description.substring(0,200);
-                    }
-                },
-                image:
-                {
-                    list: true,
-                    title: 'Item Image',
-                    type:'file',sorting: false,
-                    display: function(data)
-                    {
-                        return '<img src="' + data.record.image +  '" width="150" height="150" class="preview">';
-                    },
-                    input: function (data)
-                    {
-                        //console.log(data.record.store_id);
-                        if (data.record)
-                        {
-                            markup = (      '<div id="preview_' + data.record.store_id + '">'+
-                            '<img src="' + data.record.image +  '" width="150" height="150" class="preview" id="productimg">'+
-                            '</div>' +
-                            '<br/><br/><input type="file" accept="image/*" name="funAccessories_imgupload" id="funAccessories_img_upload" data-funAccessoriesid="' + data.record.store_id + '"/ >');
-                            return markup;
-                        }
-                        else
-                        {
-                            markup = (      '<div id="preview_0">'+
-                            '<img src="" width="150" height="150" class="preview" id="productimg">'+
-                            '</div>' +
-                            '<br/><br/><input type="file" accept="image/*" id="funAccessories_img_upload" data-funAccessoriesid="0" name="funAccessories_imgupload"/ >');
-                            return markup;
-                        }
-                    }
-
-
-                },
-                price:{
-                    list: true,
-                    title: 'Price (Rs)',
-                },
-            }
-        });
-
-        $('#funAccessoriesTableContainer').jtable('load');
-
-        $('#eventTableContainer').jtable(
-        {
-            title: 'Event Page Table',
-
-
-            formCreated: function (event, data)
-            {
-                data.form.attr('enctype','multipart/form-data');
-
-            },
-            formSubmitting: function(event, data)
-            {
-                //filename = $('input[type=file]').val().split('\\').pop();
-                //alert(filename);
-                //alert($("#" + data.form.attr("id")).find('input[name="image"]').val(filename));
-
-            },
-            paging: true, //Enable paging
-            pageSize: 10, //Set page size (default: 10)
-            sorting: true, //Enable sorting
-            defaultSorting: 'Name ASC', //Set default sorting
-            actions:
-            {
-                //listAction: 'ajax/category-ajax.php?action=list',
-                listAction: function (postData, jtParams)
-                {
-                    console.log("Loading from custom function...");
-                    return $.Deferred(function ($dfd)
-                    {
-                        $.ajax({
-                            url: 'ajax/event-ajax.php?action=list&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
-                            type: 'POST',
-                            dataType: 'json',
-                            data: postData,
-                            success: function (data)
-                            {
-                                $dfd.resolve(data);
-                            },
-                            error: function ()
-                            {
-                                $dfd.reject();
-                            }
-                        });
-                    });
-                },
-
-                //createAction: 'ajax/store-ajax.php?action=create',
-                createAction: function (postData)
-                {
-                    var formData = getVars(postData);
-
-                    if($('#event_img_upload').val() !== "")
-                    {
-                        formData.append("eventimg", $('#event_img_upload').get(0).files[0]);
-                    }
-
-                    return $.Deferred(function ($dfd)
-                    {
-                        $.ajax({
-                            url: 'ajax/event-ajax.php?action=create',
-                            //url: 'ajax/store-ajax.php?action=create&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
-                            type: 'POST',
-                            dataType: 'json',
-                            data: formData,
-                            processData: false, // Don't process the files
-                            contentType: false, // Set content type to false as jQuery will tell the server its a query string request
-                            success: function (data)
-                            {
-                                $dfd.resolve(data);
-                                $('#table-container').jtable('load');
-                            },
-                            error: function ()
-                            {
-                                $dfd.reject();
-                            }
-                        });
-                    });
-                },
-
-                //updateAction: 'ajax/store-ajax.php?action=update',
-                updateAction: function (postData)
-                {
-                    var formData = getVars(postData);
-
-                    if($('#event_img_upload').val() !== "")
-                    {
-                        formData.append("eventimg", $('#event_img_upload').get(0).files[0]);
-                    }
-
-                    return $.Deferred(function ($dfd)
-                    {
-                        $.ajax({
-                            url: 'ajax/event-ajax.php?action=update',
-                            type: 'POST',
-                            dataType: 'json',
-                            data: formData,
-                            processData: false, // Don't process the files
-                            contentType: false, // Set content type to false as jQuery will tell the server its a query string request
-                            success: function (data)
-                            {
-                                $dfd.resolve(data);
-                                $('#table-container').jtable('load');
-                            },
-                            error: function () {
-                                $dfd.reject();
-                            }
-                        });
-                    });
-                },
-                deleteAction: 'ajax/event-ajax.php?action=delete'
-            },
-            fields:
-            {
-                id: {
-                    key: true,
-                    list: false,
-                    title: 'id',
-                },
-                name: {
-                    title: 'Event Name',
-                },
-                description:
-                {
-                    list: true,
-                    title: 'Description',width: '50%',sorting: false,
-                    input: function (data)
-                    {
-                        if (data.record)
-                        {
-                            return '<textarea cols="50" id="eventDescriptionText" name="eventDescriptionText" rows="4" wrap="hard">' + data.record.description+ '</textarea>';
-                        }
-                        else
-                        {
-                            return '<textarea cols="50" id="eventDescriptionText" name="eventDescriptionText" rows="4" wrap="hard" />';
-                        }
-                    },
-                    display:function(data)
-                    {
-                        return data.record.description.substring(0,200);
-                    }
-                },
-                image:
-                {
-                    list: true,
-                    title: 'Event Image',
-                    type:'file',sorting: false,
-                    display: function(data)
-                    {
-                        return '<img src="' + data.record.image +  '" width="150" height="150" class="preview">';
-                    },
-                    input: function (data)
-                    {
-                        //console.log(data.record.store_id);
-                        if (data.record)
-                        {
-                            markup = (      '<div id="preview_' + data.record.store_id + '">'+
-                            '<img src="' + data.record.image +  '" width="150" height="150" class="preview" id="eventimg">'+
-                            '</div>' +
-                            '<br/><br/><input type="file" accept="image/*" name="event_imgupload" id="event_img_upload" data-eventid="' + data.record.store_id + '"/ >');
-                            return markup;
-                        }
-                        else
-                        {
-                            markup = (      '<div id="preview_0">'+
-                            '<img src="" width="150" height="150" class="preview" id="eventimg">'+
-                            '</div>' +
-                            '<br/><br/><input type="file" accept="image/*" id="event_img_upload" data-eventid="0" name="event_imgupload"/ >');
-                            return markup;
-                        }
-                    }
-
-
-                },
-
-            }
-        });
-
-        $('#eventTableContainer').jtable('load');
-
-
-
-        $('button.ui-dialog-titlebar-close').html('X');
-
-    });
-
-
-
-
-
-
-    $(document).on('change','#event_img_upload', function()
-    {
-        console.log(this);
-        console.log($(this));
-        var id=this.id;
-        var eventid = $(this).data('eventid');
-
-
-        //alert(storeid);
-        readURL(this,eventid);
-
-
-    });
-
-
-    $(document).on('change','#smokers_img_upload', function()
-    {
-        console.log(this);
-        console.log($(this));
-        var id=this.id;
-        var smokeid = $(this).data('smokeid');
-
-
-        //alert(storeid);
-        readURL(this,smokeid);
-
-
-    });
-
-    $(document).on('change','#funAccessories_img_upload', function()
-    {
-        console.log(this);
-        console.log($(this));
-        var id=this.id;
-        var faid = $(this).data('funaccessoriesid');
-
-
-        //alert(storeid);
-        readURL(this,faid);
-
-
-    });
-    $(document).on('change','#grocery_img_upload', function()
-    {
-        console.log(this);
-        console.log($(this));
-        var id=this.id;
-        var groceryid = $(this).data('groceryid');
-
-
-        //alert(storeid);
-        readURL(this,groceryid);
-
-
-    });
-    $(document).on('change','#productimg_upload', function()
-    {
-        console.log(this);
-        console.log($(this));
-        var id=this.id;
-        var productid = $(this).data('productid');
-
-
-        //alert(productid);
-        readURL(this,productid);
-
-
-    });
-
-    */
-</script>
+        */
+    </script>
 
 
 

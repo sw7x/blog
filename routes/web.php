@@ -19,9 +19,7 @@
 
 
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+Route::get('/', 'HomeController@index')->name('index');
 
 
 
@@ -100,14 +98,51 @@ Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
 
     Route::group(['middleware'=> 'adminPanelAuthCheck'], function() {
         Route::get ('', 'admin\AdminController@index')->name ('index');
+
         Route::get ('/contact', 'admin\AdminController@loadContactPage')->name ('contact');
+        Route::post ('/contact/view', 'admin\ContactFormController@viewComments')->name ('contact.view'); ///
+        Route::post ('/contact/delete', 'admin\ContactFormController@deleteCommentById')->name ('contact.delete');///
+
+
+
+
+
         Route::get ('/dashboard', 'admin\AdminController@loadDashboardPage')->name ('dashboard');
+
+
         Route::get ('/packages', 'admin\AdminController@loadPackagesPage')->name ('packages');
-        Route::get ('/home-slider', 'admin\AdminController@loadHomeSliderPage')->name ('home-slider');
-        Route::get ('/destinations', 'admin\AdminController@loadDestinationsPage')->name ('destinations');
-        Route::get ('/hotels', 'admin\AdminController@loadHotelsPage')->name ('hotels');
+        Route::post ('/packages/view', 'admin\PackagesController@loadPackagesTbl')->name ('packages.view');
+        Route::post ('/packages/delete', 'admin\PackagesController@deletePackageById')->name ('packages.delete');
+        Route::post ('/packages/create', 'admin\PackagesController@createPackage')->name ('packages.create');
+        Route::post ('/packages/update', 'admin\PackagesController@updatePackage')->name ('packages.update');
+
+
+
+
+
+        Route::get ('/home-slider', 'admin\HomeSliderController@loadHomeSliderPage')->name ('home-slider');
+        Route::post ('/home-slider/view', 'admin\HomeSliderController@loadHomeSliderTbl')->name ('home-slider.view');
+        Route::post ('/home-slider/delete', 'admin\HomeSliderController@deleteHomeSliderById')->name ('home-slider.delete');
+        Route::post ('/home-slider/create', 'admin\HomeSliderController@createHomeSlider')->name ('home-slider.create');
+        Route::post ('/home-slider/update', 'admin\HomeSliderController@updateHomeSlider')->name ('home-slider.update');
+
+
+
+
+
+
+
+
+
+        //Route::get ('/destinations', 'admin\AdminController@loadDestinationsPage')->name ('destinations');
+        //Route::get ('/hotels', 'admin\AdminController@loadHotelsPage')->name ('hotels');
+
+
+
+
+        
         //Route::get('/logout', 	        'admin\AdminController@logout')->name('logout');
-        Route::get ('/change-password', 'admin\AdminController@changePassword')->name ('change-password');
+        Route::get ('/change-password', 'admin\AdminController@changePassword')->name('change-password');
     });
 
     //Auth::routes();
@@ -118,15 +153,15 @@ Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
     Route::post('logout', ['as' => 'logout','uses' => 'Auth\LoginController@logout']);
 
     // Password Reset Routes...
-    Route::post('password/email', ['as' => 'password.email','uses' => 'Auth\ForgotPasswordController@sendResetLinkEmail']);
-    Route::get('password/reset', ['as' => 'password.request','uses' => 'Auth\ForgotPasswordController@showLinkRequestForm']);
-    Route::post('password/reset', ['as' => 'password.update','uses' => 'Auth\ResetPasswordController@reset']);
-    Route::get('password/reset/{token}', ['as' => 'password.reset','uses' => 'Auth\ResetPasswordController@showResetForm']);
-    Route::post('password/confirm', ['as' => 'password.confirm','uses' => 'Auth\ConfirmPasswordController@confirm']);
-    Route::get('password/confirm', ['as' => 'password.confirm','uses' => 'Auth\ConfirmPasswordController@showConfirmForm']);
+    // Route::post('password/email', ['as' => 'password.email','uses' => 'Auth\ForgotPasswordController@sendResetLinkEmail']);
+    // Route::get('password/reset', ['as' => 'password.request','uses' => 'Auth\ForgotPasswordController@showLinkRequestForm']);
+    // Route::post('password/reset', ['as' => 'password.update','uses' => 'Auth\ResetPasswordController@reset']);
+    // Route::get('password/reset/{token}', ['as' => 'password.reset','uses' => 'Auth\ResetPasswordController@showResetForm']);
+    // Route::post('password/confirm', ['as' => 'password.confirm','uses' => 'Auth\ConfirmPasswordController@confirm']);
+    // Route::get('password/confirm', ['as' => 'password.confirm','uses' => 'Auth\ConfirmPasswordController@showConfirmForm']);
 
     // Registration Routes...
-    Route::get('register', ['as' => 'register','uses' => 'Auth\RegisterController@showRegistrationForm']);
-    Route::post('register', ['as' => 'register.submit','uses' => 'Auth\RegisterController@register']);
+    // Route::get('register', ['as' => 'register','uses' => 'Auth\RegisterController@showRegistrationForm']);
+    // Route::post('register', ['as' => 'register.submit','uses' => 'Auth\RegisterController@register']);
 
 });

@@ -4,7 +4,7 @@
     <li class="xn-icon-button">
         <h4 style="margin:17px;">
             <a href='#' style="color: #000;display: block;text-decoration: none;">
-                <strong>ADMIN PANEL <?php var_dump (Auth::check()); ?></strong>
+                <strong>ADMIN PANEL <?php //var_dump (Auth::check()); ?></strong>
             </a>
         </h4>
     </li>
@@ -86,6 +86,7 @@
                         <label for="" style="float:left;padding:10px 0px;">Type New Password<span></span></label><br/>
                         <input type="password" name="password_new" value="" id="passnew" class="form-control">
                     </div>
+                    
 
                     <div>
                         <div id="hint1" class="hint"></div>

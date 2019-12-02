@@ -226,7 +226,7 @@
 <!-- Tour Packages  Discription  end -->
 
 
-<!-- Pagination -->
+<!-- Pagination
 <div class="container">
     <div class="row text-center">
         <div class="col-lg-12">
@@ -246,7 +246,7 @@
             </ul>
         </div>
     </div>
-</div>
+</div> -->
 <!-- /.row -->
 
 
