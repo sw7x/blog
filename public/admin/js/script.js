@@ -29,7 +29,9 @@ $(document).on('click', 'input[name="change_password_submit"]', function (event)
 //	alert(pwOld);
 //	alert(pwNew);
 
-    var action = $('#admin_change_password').attr('action');
+    var action    = $('#admin_change_password').attr('action');
+    var csrfToken = $('input[name="_token"]').val();
+    var userId    = $('input[name="userid"]').val();
     //alert(action);
 
 
@@ -45,7 +47,14 @@ $(document).on('click', 'input[name="change_password_submit"]', function (event)
 			dataType:'json',
 			url:action,
 			async:true,
-			data:{pwOld : pwOld,pwNew : pwNew},
+			data:{
+				pwOld : pwOld,
+				pwNew : pwNew,
+				_token : csrfToken,
+				userId : userId
+
+
+			},
 			success:function(data)
 			{
 

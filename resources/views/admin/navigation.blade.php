@@ -86,7 +86,10 @@
                         <label for="" style="float:left;padding:10px 0px;">Type New Password<span></span></label><br/>
                         <input type="password" name="password_new" value="" id="passnew" class="form-control">
                     </div>
-                    
+                    {{ csrf_field() }}
+
+
+                    <input type="hidden" name="userid" value="{{ Auth::user()->id }}">
 
                     <div>
                         <div id="hint1" class="hint"></div>

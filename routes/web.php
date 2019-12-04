@@ -142,7 +142,7 @@ Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
 
         
         //Route::get('/logout', 	        'admin\AdminController@logout')->name('logout');
-        Route::get ('/change-password', 'admin\AdminController@changePassword')->name('change-password');
+        Route::post('/change-password', 'admin\AdminController@changePassword')->name('change-password');
     });
 
     //Auth::routes();
