@@ -11,24 +11,9 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-
-
-
-
 Route::get('/', 'HomeController@index')->name('index');
 
-
-
-
-
-
-Route::get('/teen-and-summer-holidays', function () {
-    return view('teen-and-summer-holidays');
-})->name('teen-and-summer-holidays');
+Route::get('/teen-and-summer-holidays', 'TeenAndSummerHolidaysController@index')->name('teen-and-summer-holidays');
 
 Route::get('/destinations', function () {
     return view('destinations');
@@ -45,17 +30,13 @@ Route::get('/gallery', function () {
 
 
 
+//routes for contact page
 Route::group(['prefix'=>'contact','as'=>'contact.'], function(){
     Route::get('', 	  'ContactController@index')->name('index');
-
     Route::post('/submit', 'ContactController@submit')->name('submit');
     Route::get('/submit', 'ContactController@loadSubmit')->name('submit');
-
     //Route::get('/failed', 'ContactController@failed')->name('failed');
-
 });
-
-
 
 
 Route::group(['prefix'=>'packages','as'=>'packages.'], function(){
@@ -64,84 +45,40 @@ Route::group(['prefix'=>'packages','as'=>'packages.'], function(){
 });
 
 
-
-
-
-
-//AdminController@login
-
-
-
-
-// home
-// teen-and-summer-holidays
-// destinations
-// accommodation
-// gallery
-// contact
-
-
-// packdisplay.php?dis=8
-// packages
-
-
-//Auth::routes();
-
-//Route::get('/home', 'HomeController@index')->name('home');
-
-
-
-
-//Route::get('/contact',          'admin\AdminController@loadContactPage')->middleware('adminPanelAuthCheck')->name('contact');
-
+//admin panel routes
 Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
 
     Route::group(['middleware'=> 'adminPanelAuthCheck'], function() {
+        
         Route::get ('', 'admin\AdminController@index')->name ('index');
 
-        Route::get ('/contact', 'admin\AdminController@loadContactPage')->name ('contact');
-        Route::post ('/contact/view', 'admin\ContactFormController@viewComments')->name ('contact.view'); ///
-        Route::post ('/contact/delete', 'admin\ContactFormController@deleteCommentById')->name ('contact.delete');///
-
-
-
-
+        Route::group(['prefix'=>'contact','as'=>'contact.'], function(){
+            Route::get ('/contact', 'admin\AdminController@loadContactPage')->name ('index');
+            Route::post ('/contact/view', 'admin\ContactFormController@viewComments')->name ('view'); ///
+            Route::post ('/contact/delete', 'admin\ContactFormController@deleteCommentById')->name ('delete');///
+        });
 
         Route::get ('/dashboard', 'admin\AdminController@loadDashboardPage')->name ('dashboard');
 
+        Route::group(['prefix'=>'packages','as'=>'packages.'], function(){
+            Route::get ('/packages', 'admin\AdminController@loadPackagesPage')->name ('index');
+            Route::post ('/packages/view', 'admin\PackagesController@loadPackagesTbl')->name ('view');
+            Route::post ('/packages/delete', 'admin\PackagesController@deletePackageById')->name ('delete');
+            Route::post ('/packages/create', 'admin\PackagesController@createPackage')->name ('create');
+            Route::post ('/packages/update', 'admin\PackagesController@updatePackage')->name ('update');
+        });
 
-        Route::get ('/packages', 'admin\AdminController@loadPackagesPage')->name ('packages');
-        Route::post ('/packages/view', 'admin\PackagesController@loadPackagesTbl')->name ('packages.view');
-        Route::post ('/packages/delete', 'admin\PackagesController@deletePackageById')->name ('packages.delete');
-        Route::post ('/packages/create', 'admin\PackagesController@createPackage')->name ('packages.create');
-        Route::post ('/packages/update', 'admin\PackagesController@updatePackage')->name ('packages.update');
-
-
-
-
-
-        Route::get ('/home-slider', 'admin\HomeSliderController@loadHomeSliderPage')->name ('home-slider');
-        Route::post ('/home-slider/view', 'admin\HomeSliderController@loadHomeSliderTbl')->name ('home-slider.view');
-        Route::post ('/home-slider/delete', 'admin\HomeSliderController@deleteHomeSliderById')->name ('home-slider.delete');
-        Route::post ('/home-slider/create', 'admin\HomeSliderController@createHomeSlider')->name ('home-slider.create');
-        Route::post ('/home-slider/update', 'admin\HomeSliderController@updateHomeSlider')->name ('home-slider.update');
-
-
-
-
-
-
-
-
+        Route::group(['prefix'=>'home-slider','as'=>'home-slider.'], function(){
+            Route::get ('/home-slider', 'admin\HomeSliderController@loadHomeSliderPage')->name ('index');
+            Route::post ('/home-slider/view', 'admin\HomeSliderController@loadHomeSliderTbl')->name ('view');
+            Route::post ('/home-slider/delete', 'admin\HomeSliderController@deleteHomeSliderById')->name ('delete');
+            Route::post ('/home-slider/create', 'admin\HomeSliderController@createHomeSlider')->name ('create');
+            Route::post ('/home-slider/update', 'admin\HomeSliderController@updateHomeSlider')->name ('update');
+        });
 
         //Route::get ('/destinations', 'admin\AdminController@loadDestinationsPage')->name ('destinations');
-        //Route::get ('/hotels', 'admin\AdminController@loadHotelsPage')->name ('hotels');
-
-
-
-
+        //Route::get ('/hotels', 'admin\AdminController@loadHotelsPage')->name ('hotels');       
         
-        //Route::get('/logout', 	        'admin\AdminController@logout')->name('logout');
         Route::post('/change-password', 'admin\AdminController@changePassword')->name('change-password');
     });
 

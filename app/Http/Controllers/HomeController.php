@@ -19,8 +19,6 @@ class HomeController extends Controller
         //$this->middleware('auth');
     }
 
-
-
     public function index()
     {       
 

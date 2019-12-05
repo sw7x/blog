@@ -8,11 +8,4 @@ class Package extends Model
 {
      protected $table = 'packages';
      public $timestamps = false;
-     //protected $fillable = ['title'];
-
-
-     public function aaa()
-     {
-         //echo 'AAAA';
-     }
 }

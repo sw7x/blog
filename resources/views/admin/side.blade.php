@@ -38,14 +38,14 @@
                     </li>
 
 
-                    <li class="{{ Route::is('admin.home-slider') ? 'active' : '' }}">
-                        <a href="{{route('admin.home-slider')}}" class="sidebar_menu_item sidebar_link_highlight'>
+                    <li class="{{ Route::is('admin.home-slider.index') ? 'active' : '' }}">
+                        <a href="{{route('admin.home-slider.index')}}" class="sidebar_menu_item sidebar_link_highlight'>
                             <span class="fa fa-desktop"></span> <span class="xn-text">Home Slider</span>
                         </a>
                     </li>
 
-                    <li class="{{ Route::is('admin.packages') ? 'active' : '' }}">
-                        <a href="{{route('admin.packages')}}" class="sidebar_menu_item sidebar_link_highlight'>
+                    <li class="{{ Route::is('admin.packages.index') ? 'active' : '' }}">
+                        <a href="{{route('admin.packages.index')}}" class="sidebar_menu_item sidebar_link_highlight'>
                             <span class="fa fa-desktop"></span> <span class="xn-text">Tour Packages</span>
                         </a>
                     </li>
@@ -69,8 +69,8 @@
                     </li>
                     -->
 
-                    <li class="{{ Route::is('admin.contact') ? 'active' : '' }}">
-                        <a href="{{route('admin.contact')}}" class="sidebar_menu_item sidebar_link_highlight'>
+                    <li class="{{ Route::is('admin.contact.index') ? 'active' : '' }}">
+                        <a href="{{route('admin.contact.index')}}" class="sidebar_menu_item sidebar_link_highlight'>
                             <span class="fa fa-desktop"></span> <span class="xn-text">Contact Form</span>
                         </a>
                     </li>                  

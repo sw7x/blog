@@ -11,11 +11,10 @@ use mysql_xdevapi\Exception;
 class ContactController extends Controller
 {
     //
-
-
 	public function index(){
 		return view('contact');
 	}
+
 	public function submit(Request $request){
 		//dd('submit');
 
@@ -33,10 +32,11 @@ class ContactController extends Controller
 
                 //dd($request->input('g-recaptcha-response'));
                 $data = [
-                    'secret' => '6LdCBcIUAAAAAG9wDaCMnxsiNYU7su05QpJF4aSM',
+                    'secret' => env('RECAPTCHA_SECRET'),
                     'response' => $request->input('g-recaptcha-response')
                 ];
 
+                //check google recpatcha
                 $curl = curl_init();
                 curl_setopt($curl, CURLOPT_POST, true);
                 curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
@@ -50,7 +50,7 @@ class ContactController extends Controller
                     // Failure
                     throw new \Exception('Recaptcha validate failed');
                 } else {
-                    // Success
+                    
                     DB::beginTransaction();
 
                     $inquiry = new Inquiry();
@@ -102,13 +102,5 @@ class ContactController extends Controller
         return view('contact-submit');
 	    //dd('failed');
     }
-
-	public function failed(){
-		dd('failed');
-	}
-
-
-
-
 
 }
